@@ -27,24 +27,23 @@ from config import (
     SERVER_PATH_STORAGE_MD,
     SERVER_PATH_STORAGE_BACKUP,
     TIME_ZONE_CN,
-    topic,
-    render_style,
-    editor_name,
     logger
 )
 
+# --- Utility Functions ---
 class ToolBox:
     @staticmethod
     def log_date(mode="log"):
+        now = datetime.now(TIME_ZONE_CN)
         if mode == "log":
-            return str(datetime.now(TIME_ZONE_CN)).split(".")[0]
+            return str(now).split(".")[0]
         elif mode == "file":
-            return str(datetime.now(TIME_ZONE_CN)).split(" ")[0]
+            return str(now).split(" ")[0]
 
     @staticmethod
     def get_yaml_data() -> dict:
         with open(SERVER_PATH_TOPIC, "r", encoding="utf8") as f:
-            data = yaml.load(f, Loader=yaml.SafeLoader)
+            data = yaml.safe_load(f)
         print("YAML Data:", data)
         return data
 
@@ -54,13 +53,14 @@ class ToolBox:
             "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
                           "Chrome/95.0.4638.69 Safari/537.36 Edg/95.0.1020.44"
         }
-        async with session.get(url, headers=headers) as response:
-            try:
-                data_ = await response.json()
-                return data_
-            except json.JSONDecodeError as e:
-                logger.error(f"JSON decode error: {e}")
-                return None
+        try:
+            async with session.get(url, headers=headers) as response:
+              response.raise_for_status()
+              return await response.json()
+        except (json.JSONDecodeError, aiohttp.ClientError) as e:
+            logger.error(f"Error fetching or decoding JSON from {url}: {e}")
+            return None
+
 
     @staticmethod
     async def handle_md(session, url: str):
@@ -68,166 +68,73 @@ class ToolBox:
             "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
                           "Chrome/95.0.4638.69 Safari/537.36 Edg/95.0.1020.44"
         }
-        async with session.get(url, headers=headers) as response:
-            try:
-                data_ = await response.text()
-                return data_
-            except Exception as e:
-                logger.error(f"Error fetching MD content: {e}")
-                return None
-
-class CoroutineSpeedup:
-    def __init__(self, work_q: asyncio.Queue = None, task_docker=None):
-        self.worker = work_q if work_q else asyncio.Queue()
-        self.channel = asyncio.Queue()
-        self.task_docker = task_docker
-        self.power = 32
-        self.max_queue_size = 0
-        self.cache_space = []
-        self.max_results = 20
-
-    async def _adaptor(self):
         try:
-            print("Starting _adaptor...")
-            while True:
-                if self.worker.empty():
-                    print("Worker queue is empty. Waiting...")
-                    await asyncio.sleep(1)  # Sleep to prevent tight loop
-                else:
-                    task: dict = await self.worker.get()
-                    print(f"Got task: {task}")
-                    if task.get("pending"):
-                        print("Handling pending task...")
-                        await self.runtime(context=task.get("pending"))
-                    elif task.get("response"):
-                        print("Handling response task...")
-                        await self.parse(context=task)
-                if self.worker.empty() and self.channel.empty():
-                    break
-            print("Adaptor loop completed.")
-        except Exception as e:
-            print(f"Error in _adaptor: {e}")
+          async with session.get(url, headers=headers) as response:
+            response.raise_for_status()
+            return await response.text()
+        except aiohttp.ClientError as e:
+          logger.error(f"Error fetching MD content from {url}: {e}")
+          return None
 
-    def _progress(self):
-        p = self.max_queue_size - self.worker.qsize() - self.power
-        p = 0 if p < 1 else p
-        return p
+# --- ArXiv Data Fetching and Parsing ---
+class ArxivPaperProcessor:
+    def __init__(self, max_results=20):
+        self.max_results = max_results
 
-    async def runtime(self, context: dict):
-        keyword_ = context.get("keyword")
-        print(f"Searching for keyword: {keyword_}")
+    async def fetch_arxiv_papers(self, keyword):
         try:
             res = arxiv.Search(
-                query="ti:"+keyword_+"+OR+abs:"+keyword_,
+                query=f"ti:{keyword}+OR+abs:{keyword}",
                 max_results=self.max_results,
                 sort_by=arxiv.SortCriterion.SubmittedDate
             ).results()
-            print(f"Query results: {list(res)}")
-            context.update({"response": res, "hook": context})
-            await self.worker.put(context)
+            return list(res)
         except Exception as e:
-            print(f"Error during arXiv query: {e}")
+            logger.error(f"Error during arXiv query for '{keyword}': {e}")
+            return []
 
     @staticmethod
     def clean_paper_title(title):
         normalized_title = unicodedata.normalize('NFKD', title)
         cleaned_title = re.sub(r'[^\w\s]', '', normalized_title)
         cleaned_title = re.sub(r'\s+', ' ', cleaned_title)
-        cleaned_title = cleaned_title.strip()
-        return cleaned_title
+        return cleaned_title.strip()
 
-    async def parse(self, context):
+    async def process_paper_data(self, arxiv_results):
+        papers = {}
         base_url = "https://arxiv.paperswithcode.com/api/v0/papers/"
-        _paper = {}
-        arxiv_res = context.get("response")
         async with aiohttp.ClientSession() as session:
-            for result in arxiv_res:
-                paper_id = result.get_short_id()
-                paper_title = self.clean_paper_title(result.title)
-                paper_url = result.entry_id
-                paper_abstract = result.summary.strip().replace('\n', ' ').replace('\r', " ")
-                code_url = base_url + paper_id
-                paper_first_author = result.authors[0]
-                publish_time = result.published.date()
-                ver_pos = paper_id.find('v')
-                paper_key = paper_id if ver_pos == -1 else paper_id[0:ver_pos]
-                print(f"Processing paper ID {paper_id}...")
+          for result in arxiv_results:
+            paper_id = result.get_short_id()
+            paper_title = self.clean_paper_title(result.title)
+            paper_url = result.entry_id
+            paper_abstract = result.summary.strip().replace('\n', ' ').replace('\r', " ")
+            code_url = base_url + paper_id
+            paper_first_author = result.authors[0]
+            publish_time = result.published.date()
+            ver_pos = paper_id.find('v')
+            paper_key = paper_id if ver_pos == -1 else paper_id[0:ver_pos]
+            logger.info(f"Processing paper ID {paper_id}...")
 
-                response = await ToolBox.handle_html(session, code_url)
-                if response:
-                    official_ = response.get("official")
-                    repo_url = official_.get("url", "null") if official_ else "null"
-                else:
-                    repo_url = "null"
+            repo_url = None
+            response = await ToolBox.handle_html(session, code_url)
+            if response and response.get("official"):
+              repo_url = response["official"].get("url", "null")
+            else:
+               repo_url = "null"
 
-                _paper.update({
-                    paper_key: {
-                        "publish_time": publish_time,
-                        "title": paper_title,
-                        "authors": f"{paper_first_author} et.al.",
-                        "id": paper_id,
-                        "paper_url": paper_url,
-                        "repo": repo_url,
-                        "abstract": paper_abstract
-                    },
-                })
-        await self.channel.put({
-            "paper": _paper,
-            "topic": context["hook"]["topic"],
-            "subtopic": context["hook"]["subtopic"],
-            "fields": ["Publish Date", "Title", "Authors", "PDF", "Code", "Abstract"]
-        })
-        logger.success(
-            f"handle [{self.channel.qsize()}/{self.max_queue_size}]"
-            f" | topic=`{context['topic']}` subtopic=`{context['hook']['subtopic']}`")
-    
-    def offload_tasks(self):
-        if self.task_docker:
-            for task in self.task_docker:
-                print(f"Offloading task: {task}")
-                self.worker.put_nowait({"pending": task})
-        self.max_queue_size = self.worker.qsize()
-        print(f"Queue size after offloading tasks: {self.max_queue_size}")
+            papers[paper_key] = {
+                "publish_time": publish_time,
+                "title": paper_title,
+                "authors": f"{paper_first_author} et.al.",
+                "id": paper_id,
+                "paper_url": paper_url,
+                "repo": repo_url,
+                "abstract": paper_abstract
+            }
+        return papers
 
-    async def overload_tasks(self):
-        ot = _OverloadTasks()
-        file_obj: dict = {}
-        while not self.channel.empty():
-            print('==')
-            context: dict = await self.channel.get()
-            md_obj: dict = ot.to_markdown(context)
-            print('json2md')
-
-            if not file_obj.get(md_obj["hook"]):
-                file_obj[md_obj["hook"]] = md_obj["hook"]
-            file_obj[md_obj["hook"]] += md_obj["content"]
-
-            os.makedirs(os.path.join(SERVER_PATH_DOCS, f'{context["topic"]}'), exist_ok=True)
-            with open(os.path.join(SERVER_PATH_DOCS, f'{context["topic"]}', f'{md_obj["hook"]}.md'), "w",
-                      encoding="utf8") as f:
-                f.write(md_obj["content"])
-
-        if file_obj:
-            for key, val in file_obj.items():
-                path = os.path.join(SERVER_PATH_DOCS, f"{key}.md")
-                with open(path, "w", encoding="utf8") as f:
-                    f.write(val)
-
-        ot.storage(
-            content=ot.generate_markdown_template(file_obj),
-            obj_="Update"
-        )
-
-    async def go(self, power: int = 1):
-        self.power = power
-        self.offload_tasks()
-        self.max_queue_size = self.worker.qsize()
-        await asyncio.gather(*(self._adaptor() for _ in range(self.power)))
-        await self.overload_tasks()
-
-# New function added here
-    
-    
+# --- Markdown Generation ---
 def build_frontmatter_appleblog(
     author, cover_image_url, description, keywords, pubdate, tags, title
 ):
@@ -252,17 +159,12 @@ def build_frontmatter_appleblog(
         "title": title,
     }
     return yaml.dump(frontmatter, default_flow_style=False)
-    
 
-class _OverloadTasks:
+class MarkdownGenerator:
     def __init__(self):
         self.update_time = ToolBox.log_date()
-        self.storage_path_by_date = os.path.join(SERVER_DIR_STORAGE, self.update_time)
-        self.storage_path_docs = SERVER_PATH_DOCS
-        self.storage_path_readme = SERVER_PATH_README
 
     def to_markdown(self, context):
-          # Mock data for demonstration purposes
         author = "arxiv-bot"
         cover_image_url = ""  # You would need to generate or fetch a relevant image URL
         description = context["paper"].get("abstract", "No abstract available.")[:200] + '...' # Limit to the first 200 characters
@@ -270,8 +172,7 @@ class _OverloadTasks:
         pubdate = context["paper"].get("publish_time","").isoformat() if context["paper"].get("publish_time") else ToolBox.log_date() # Use publish_time or current time
         tags = [context["topic"], context["subtopic"]]  # You might extract tags based on the content
         title = context["paper"].get("title", "Unknown Paper")
-
-
+        
         frontmatter = build_frontmatter_appleblog(
             author=author,
             cover_image_url=cover_image_url,
@@ -297,38 +198,125 @@ class _OverloadTasks:
             "hook": context["topic"],
             "content": md_content,
         }
-  
 
 
     def generate_markdown_template(self, content):
-        # Mock implementation of generate_markdown_template
         return f"# Daily ArXiv Updates\n\n{content}"
 
-    def storage(self, content, obj_=""):
-        if not os.path.exists(self.storage_path_by_date):
-            os.makedirs(self.storage_path_by_date)
+    def storage(self, content):
+        storage_path_by_date = os.path.join(SERVER_DIR_STORAGE, self.update_time)
+        if not os.path.exists(storage_path_by_date):
+            os.makedirs(storage_path_by_date)
 
         # Save markdown content
-        with open(os.path.join(self.storage_path_by_date, f"updates_{self.update_time}.md"), "w", encoding="utf8") as f:
+        with open(os.path.join(storage_path_by_date, f"updates_{self.update_time}.md"), "w", encoding="utf8") as f:
             f.write(content)
 
         # Save readme if it doesn't exist
-        if not os.path.exists(self.storage_path_readme):
-            with open(self.storage_path_readme, "w", encoding="utf8") as f:
-                f.write(f"# Daily Updates\n\nUpdates saved in {self.storage_path_by_date}\n")
+        if not os.path.exists(SERVER_PATH_README):
+            with open(SERVER_PATH_README, "w", encoding="utf8") as f:
+                f.write(f"# Daily Updates\n\nUpdates saved in {storage_path_by_date}\n")
 
         # Copy latest updates to docs directory
-        shutil.copytree(self.storage_path_by_date, self.storage_path_docs, dirs_exist_ok=True)
+        shutil.copytree(storage_path_by_date, SERVER_PATH_DOCS, dirs_exist_ok=True, )
 
+
+# --- Async Task Management ---
+class CoroutineSpeedup:
+    def __init__(self, worker_q: asyncio.Queue = None, task_docker=None, power=32):
+        self.worker = worker_q if worker_q else asyncio.Queue()
+        self.channel = asyncio.Queue()
+        self.task_docker = task_docker
+        self.power = power
+        self.max_queue_size = 0
+    
+
+    async def _adaptor(self):
+        while True:
+            if self.worker.empty():
+                if self.worker.empty() and self.channel.empty():
+                    break  # Break if both are empty
+                await asyncio.sleep(1)  # Avoid busy waiting when the queue is empty
+                continue
+            task: dict = await self.worker.get()
+            if task.get("pending"):
+                await self.runtime(context=task.get("pending"))
+            elif task.get("response"):
+                await self.parse(context=task)
+
+
+    def offload_tasks(self):
+        if self.task_docker:
+            for task in self.task_docker:
+                self.worker.put_nowait({"pending": task})
+        self.max_queue_size = self.worker.qsize()
+
+
+    async def runtime(self, context: dict):
+          keyword = context.get("keyword")
+          logger.info(f"Searching for keyword: {keyword}")
+          arxiv_processor = ArxivPaperProcessor()
+          papers = await arxiv_processor.fetch_arxiv_papers(keyword)
+          if papers:
+              context["response"] = papers
+              context["hook"] = context
+              await self.worker.put(context)
+
+    async def parse(self, context):
+         arxiv_processor = ArxivPaperProcessor()
+         papers = await arxiv_processor.process_paper_data(context["response"])
+         for paper_key, paper in papers.items():
+             await self.channel.put({
+                    "paper": paper,
+                    "topic": context["hook"]["topic"],
+                    "subtopic": context["hook"]["subtopic"],
+                    "fields": ["Publish Date", "Title", "Authors", "PDF", "Code", "Abstract"]
+             })
+         logger.success(f"Handled | topic=`{context['hook']['topic']}` subtopic=`{context['hook']['subtopic']}`")
+
+    async def overload_tasks(self):
+        md_generator = MarkdownGenerator()
+        file_obj: dict = {}
+        while not self.channel.empty():
+            context: dict = await self.channel.get()
+            md_obj: dict = md_generator.to_markdown(context)
+
+            if not file_obj.get(md_obj["hook"]):
+                file_obj[md_obj["hook"]] = ""  # Initialize as an empty string
+            file_obj[md_obj["hook"]] += md_obj["content"]
+
+            os.makedirs(os.path.join(SERVER_PATH_DOCS, f'{context["topic"]}'), exist_ok=True)
+            with open(os.path.join(SERVER_PATH_DOCS, f'{context["topic"]}', f'{md_obj["hook"]}.md'), "w",
+                      encoding="utf8") as f:
+                f.write(md_obj["content"])
+
+
+        if file_obj:
+            for key, val in file_obj.items():
+                path = os.path.join(SERVER_PATH_DOCS, f"{key}.md")
+                with open(path, "w", encoding="utf8") as f:
+                   f.write(val)
+
+        md_generator.storage(
+           content=md_generator.generate_markdown_template(file_obj),
+        )
+
+    async def go(self):
+        self.offload_tasks()
+        await asyncio.gather(*(self._adaptor() for _ in range(self.power)))
+        await self.overload_tasks()
+
+# --- Main Execution ---
 async def main():
     toolbox = ToolBox()
-    context = toolbox.get_yaml_data()
-    # example_task = {"keyword": "machine learning"}
-        # Set tasks
-    pending_atomic = [{"subtopic": subtopic, "keyword": keyword.replace('"', ""), "topic": topic}
-                          for topic, subtopics in context.items() for subtopic, keyword in subtopics.items()]
-    cs = CoroutineSpeedup(task_docker=pending_atomic)
-    await cs.go(power=1)  # Using power=1 for simplicity
+    config_data = toolbox.get_yaml_data()
+    pending_tasks = [
+        {"subtopic": subtopic, "keyword": keyword.replace('"', ""), "topic": topic}
+        for topic, subtopics in config_data.items()
+        for subtopic, keyword in subtopics.items()
+    ]
+    cs = CoroutineSpeedup(task_docker=pending_tasks, power=1)
+    await cs.go()
 
 if __name__ == "__main__":
     asyncio.run(main())
