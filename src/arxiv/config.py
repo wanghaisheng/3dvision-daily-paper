@@ -39,7 +39,7 @@ render_style='appleblog'
 
 # appleblog style
 
-SERVER_DIR_DATABASE = join(SERVER_DIR_PROJECT, "appleblog/src/pages")
+SERVER_DIR_DATABASE = join(SERVER_DIR_PROJECT, "themes/appleblog/src/pages")
 
 SERVER_DIR_STORAGE = join(SERVER_DIR_DATABASE, "posts")
 
@@ -49,7 +49,7 @@ SERVER_PATH_STORAGE_BACKUP = join("database", "backup/{}.md")
 
 # weekly style
 
-# SERVER_DIR_DATABASE = join(SERVER_DIR_PROJECT, "weekly/src/pages")
+# SERVER_DIR_DATABASE = join(SERVER_DIR_PROJECT, "themes/weekly/src/pages")
 
 # SERVER_DIR_STORAGE = join(SERVER_DIR_DATABASE, "posts")
 
@@ -60,7 +60,7 @@ topic="brand,brand monitor"
 
 
 
-SERVER_PATH_TOPIC = join("database", "topic.yml")
+SERVER_PATH_TOPIC = join("./", "topic.yml")
 
 # 服务器日志文件路径
 SERVER_DIR_DATABASE_LOG = join(SERVER_DIR_DATABASE, "logs")
