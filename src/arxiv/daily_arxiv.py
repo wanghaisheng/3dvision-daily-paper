@@ -225,6 +225,35 @@ class CoroutineSpeedup:
         await asyncio.gather(*(self._adaptor() for _ in range(self.power)))
         await self.overload_tasks()
 
+# New function added here
+    
+    
+def build_frontmatter_appleblog(
+    author, cover_image_url, description, keywords, pubdate, tags, title
+):
+    frontmatter = {
+        "author": author,
+        "cover": {
+            "alt": "cover",
+            "square": cover_image_url,
+            "url": cover_image_url,
+        },
+        "description": description,
+        "featured": True,
+        "keywords": keywords,
+        "layout": "../../layouts/MarkdownPost.astro",
+        "meta": [
+            {"content": author, "name": "author"},
+            {"content": keywords, "name": "keywords"},
+        ],
+        "pubDate": pubdate,
+        "tags": tags,
+        "theme": "light",
+        "title": title,
+    }
+    return yaml.dump(frontmatter, default_flow_style=False)
+    
+
 class _OverloadTasks:
     def __init__(self):
         self.update_time = ToolBox.log_date()
@@ -233,17 +262,43 @@ class _OverloadTasks:
         self.storage_path_readme = SERVER_PATH_README
 
     def to_markdown(self, context):
-        # Mock implementation of to_markdown
+          # Mock data for demonstration purposes
+        author = "arxiv-bot"
+        cover_image_url = ""  # You would need to generate or fetch a relevant image URL
+        description = context["paper"].get("abstract", "No abstract available.")[:200] + '...' # Limit to the first 200 characters
+        keywords = [context["topic"],context["subtopic"]] # You might extract actual keywords based on the content
+        pubdate = context["paper"].get("publish_time","").isoformat() if context["paper"].get("publish_time") else ToolBox.log_date() # Use publish_time or current time
+        tags = [context["topic"], context["subtopic"]]  # You might extract tags based on the content
+        title = context["paper"].get("title", "Unknown Paper")
+
+
+        frontmatter = build_frontmatter_appleblog(
+            author=author,
+            cover_image_url=cover_image_url,
+            description=description,
+            keywords=", ".join(keywords),
+            pubdate=pubdate,
+            tags=tags,
+            title=title,
+        )
+        md_content = f"""
+        ---\n
+        {frontmatter}
+        ---\n
+        # {title}
+
+        **Publish Time:** {context['paper'].get('publish_time', 'Not available')}
+        **Authors:** {context['paper'].get('authors', 'Not available')}
+        **PDF Link:** [{context['paper'].get('id', 'Not available')}]({context['paper'].get('paper_url', 'Not available')})
+        **Code Repo:** {context['paper'].get('repo', 'Not available')}
+        **Abstract:** {context['paper'].get('abstract', 'Not available')}
+        """
         return {
             "hook": context["topic"],
-            "content": f"# {context['topic']} - {context['subtopic']}\n\n" +
-                       f"**Publish Time:** {context['paper']['publish_time']}\n" +
-                       f"**Title:** {context['paper']['title']}\n" +
-                       f"**Authors:** {context['paper']['authors']}\n" +
-                       f"**PDF Link:** {context['paper']['paper_url']}\n" +
-                       f"**Code Repo:** {context['paper']['repo']}\n" +
-                       f"**Abstract:** {context['paper']['abstract']}\n"
+            "content": md_content,
         }
+  
+
 
     def generate_markdown_template(self, content):
         # Mock implementation of generate_markdown_template
