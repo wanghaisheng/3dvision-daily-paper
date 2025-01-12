@@ -259,7 +259,7 @@ class CoroutineSpeedup:
           papers = await arxiv_processor.fetch_arxiv_papers(keyword)
           if papers:
               context["response"] = papers
-              context["hook"] = context
+              context["hook"] = {"topic":context["topic"],"subtopic":context["subtopic"]} # Use a dictionary for topic and subtopic
               await self.worker.put(context)
 
     async def parse(self, context):
