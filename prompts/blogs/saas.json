@@ -1,0 +1,201 @@
+{
+    "metadata": {
+        "version": "1.0",
+        "last_updated": "2024-12-22",
+        "author": "wanghaisheng",
+        "type": "saas_blog_content",
+        "repository": "github-daily-event-to-blog-update"
+    },
+    "saas_blog_templates": {
+        "educational": {
+            "how_to_guides": {
+                "required_vars": {
+                    "product_name": "string",
+                    "task": "string",
+                    "steps": "array",
+                    "benefits": "array",
+                    "difficulty_level": "string"
+                },
+                "template": {
+                    "title_formats": [
+                        "How to Use [product_name] for [task]",
+                        "Step-by-Step Guide to [task] with [product_name]",
+                        "Complete Guide: [task] Using [product_name]"
+                    ],
+                    "sections": [
+                        "Introduction",
+                        "Prerequisites",
+                        "Step-by-Step Guide",
+                        "Pro Tips",
+                        "Common Mistakes to Avoid",
+                        "Conclusion"
+                    ],
+                    "meta": {
+                        "recommended_length": "1500-2000 words",
+                        "include_screenshots": true,
+                        "include_videos": "optional",
+                        "target_audience": "new users"
+                    }
+                }
+            },
+            "best_practices": {
+                "required_vars": {
+                    "topic": "string",
+                    "practices": "array",
+                    "examples": "array",
+                    "product_features": "array"
+                },
+                "template": {
+                    "title_formats": [
+                        "[number] Best Practices for [topic] with [product_name]",
+                        "Maximize Your [topic] Efficiency: Best Practices Guide"
+                    ],
+                    "sections": [
+                        "Overview",
+                        "Why These Practices Matter",
+                        "Detailed Best Practices",
+                        "Implementation Guide",
+                        "Measuring Success"
+                    ]
+                }
+            }
+        },
+        "thought_leadership": {
+            "industry_trends": {
+                "required_vars": {
+                    "industry": "string",
+                    "trends": "array",
+                    "statistics": "array",
+                    "predictions": "array"
+                },
+                "template": {
+                    "title_formats": [
+                        "The Future of [industry]: [year] Trends",
+                        "[number] [industry] Trends You Can't Ignore"
+                    ],
+                    "sections": [
+                        "Industry Overview",
+                        "Current State",
+                        "Emerging Trends",
+                        "Expert Insights",
+                        "Action Steps"
+                    ]
+                }
+            }
+        },
+        "product_focused": {
+            "feature_announcements": {
+                "required_vars": {
+                    "feature_name": "string",
+                    "benefits": "array",
+                    "use_cases": "array",
+                    "setup_steps": "array"
+                },
+                "template": {
+                    "title_formats": [
+                        "Introducing [feature_name]: A New Way to [benefit]",
+                        "New in [product_name]: [feature_name] Is Here!"
+                    ],
+                    "sections": [
+                        "Feature Overview",
+                        "Key Benefits",
+                        "How It Works",
+                        "Getting Started",
+                        "Use Cases",
+                        "Next Steps"
+                    ]
+                }
+            }
+        },
+        "case_studies": {
+            "success_stories": {
+                "required_vars": {
+                    "client_name": "string",
+                    "industry": "string",
+                    "challenge": "string",
+                    "solution": "string",
+                    "results": "array"
+                },
+                "template": {
+                    "title_formats": [
+                        "How [client_name] Achieved [result] with [product_name]",
+                        "Case Study: [client_name]'s Journey to Success"
+                    ],
+                    "sections": [
+                        "Client Background",
+                        "The Challenge",
+                        "The Solution",
+                        "Implementation",
+                        "Results",
+                        "Key Takeaways"
+                    ]
+                }
+            }
+        },
+        "seo_focused": {
+            "keyword_guides": {
+                "required_vars": {
+                    "main_keyword": "string",
+                    "related_keywords": "array",
+                    "search_intent": "string",
+                    "faq_items": "array"
+                },
+                "template": {
+                    "title_formats": [
+                        "The Complete Guide to [main_keyword]",
+                        "Everything You Need to Know About [main_keyword]"
+                    ],
+                    "sections": [
+                        "What is [main_keyword]",
+                        "Why It Matters",
+                        "How It Works",
+                        "Best Practices",
+                        "FAQ",
+                        "Next Steps"
+                    ],
+                    "meta": {
+                        "min_word_count": 2000,
+                        "keyword_density": "1-2%",
+                        "header_structure": ["H1", "H2", "H3"]
+                    }
+                }
+            }
+        }
+    },
+    "content_guidelines": {
+        "word_count_ranges": {
+            "how_to_guides": "1500-2000",
+            "case_studies": "1000-1500",
+            "thought_leadership": "1200-1800",
+            "product_announcements": "800-1200",
+            "seo_articles": "2000+"
+        },
+        "seo_requirements": {
+            "meta_description": "150-160 characters",
+            "title_tag": "50-60 characters",
+            "heading_structure": "H1-H4",
+            "internal_links": "3-5",
+            "external_links": "2-3",
+            "image_alt_text": "required"
+        },
+        "content_structure": {
+            "paragraph_length": "2-4 sentences",
+            "subheadings": "every 300 words",
+            "bullet_points": "use for lists of 3+ items"
+        }
+    },
+    "publishing_schedule": {
+        "recommended_frequency": {
+            "minimum": "1 post/week",
+            "optimal": "2-3 posts/week",
+            "maximum": "5 posts/week"
+        },
+        "content_mix": {
+            "educational": "30%",
+            "thought_leadership": "20%",
+            "product_focused": "20%",
+            "case_studies": "15%",
+            "seo_focused": "15%"
+        }
+    }
+}

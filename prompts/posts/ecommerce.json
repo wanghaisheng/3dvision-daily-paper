@@ -1,0 +1,162 @@
+{
+    "metadata": {
+        "version": "1.0",
+        "last_updated": "2024-12-22",
+        "author": "wanghaisheng",
+        "type": "ecommerce_product_journey",
+        "repository": "github-daily-event-to-blog-update"
+    },
+    "ecommerce_templates": {
+        "concept_phase": {
+            "teasers": {
+                "mystery_tease": {
+                    "required_vars": {
+                        "product_category": "string",
+                        "hint": "string",
+                        "emoji": "string"
+                    },
+                    "template": "[emoji] Something exciting is coming...\n\nHint: [hint]\nCategory: [product_category]\n\n#ComingSoon #ProductTeaser"
+                },
+                "concept_reveal": {
+                    "required_vars": {
+                        "product_name": "string",
+                        "concept_description": "string",
+                        "inspiration": "string"
+                    },
+                    "template": "✨ The Vision Behind [product_name]\n\n[concept_description]\n\nInspired by: [inspiration]\n\n#ProductDesign #Innovation"
+                }
+            },
+            "customer_input": {
+                "feature_poll": {
+                    "required_vars": {
+                        "question": "string",
+                        "options": "array",
+                        "context": "string"
+                    },
+                    "template": "🤔 We need your input!\n\n[question]\n\nOptions:\n1. [options[0]]\n2. [options[1]]\n3. [options[2]]\n\n[context]\n\n#CustomerFeedback"
+                }
+            }
+        },
+        "design_phase": {
+            "prototype": {
+                "design_reveal": {
+                    "required_vars": {
+                        "product_name": "string",
+                        "key_features": "array",
+                        "design_story": "string",
+                        "image_link": "string"
+                    },
+                    "template": "🎨 First Look: [product_name]!\n\nKey Features:\n• [key_features]\n\nDesign Story: [design_story]\n\n[image_link]\n\n#ProductDesign #ComingSoon"
+                },
+                "prototype_testing": {
+                    "required_vars": {
+                        "test_type": "string",
+                        "results": "string",
+                        "next_steps": "string"
+                    },
+                    "template": "🧪 Testing in Progress!\n\nTest: [test_type]\nResults: [results]\nNext Steps: [next_steps]\n\n#ProductTesting #Quality"
+                }
+            }
+        },
+        "manufacturing_phase": {
+            "production_updates": {
+                "factory_peek": {
+                    "required_vars": {
+                        "product_name": "string",
+                        "production_stage": "string",
+                        "quality_focus": "string"
+                    },
+                    "template": "🏭 Behind the Scenes\n\n[product_name] Production Update:\nStage: [production_stage]\nQuality Focus: [quality_focus]\n\n#Manufacturing #Quality"
+                },
+                "materials_spotlight": {
+                    "required_vars": {
+                        "material_type": "string",
+                        "benefits": "array",
+                        "sustainability": "string"
+                    },
+                    "template": "🌟 Material Spotlight\n\nFeaturing: [material_type]\nBenefits:\n• [benefits]\n\nSustainability: [sustainability]\n\n#Quality #Sustainable"
+                }
+            }
+        },
+        "marketing_phase": {
+            "pre_launch": {
+                "launch_announcement": {
+                    "required_vars": {
+                        "product_name": "string",
+                        "launch_date": "string",
+                        "special_offer": "string",
+                        "cta": "string"
+                    },
+                    "template": "🚀 Launch Alert!\n\n[product_name] launches [launch_date]!\n\nSpecial Offer: [special_offer]\n\n[cta]\n\n#ProductLaunch #NewProduct"
+                },
+                "early_access": {
+                    "required_vars": {
+                        "offer_details": "string",
+                        "deadline": "string",
+                        "exclusive_perks": "array"
+                    },
+                    "template": "🎁 Early Access Alert!\n\n[offer_details]\n\nPerks:\n• [exclusive_perks]\n\nEnds: [deadline]\n\n#ExclusiveOffer"
+                }
+            },
+            "influencer_content": {
+                "review_share": {
+                    "required_vars": {
+                        "influencer_name": "string",
+                        "key_points": "array",
+                        "quote": "string"
+                    },
+                    "template": "👀 Influencer Review\n\n[influencer_name] tried [product_name]!\n\nHighlights:\n• [key_points]\n\n\"[quote]\"\n\n#ProductReview"
+                }
+            }
+        },
+        "post_launch": {
+            "customer_engagement": {
+                "testimonial_spotlight": {
+                    "required_vars": {
+                        "customer_name": "string",
+                        "testimonial": "string",
+                        "use_case": "string"
+                    },
+                    "template": "💬 Customer Spotlight\n\n\"[testimonial]\"\n- [customer_name]\n\nUse Case: [use_case]\n\n#CustomerSuccess"
+                },
+                "ugc_campaign": {
+                    "required_vars": {
+                        "campaign_name": "string",
+                        "instructions": "string",
+                        "prize": "string",
+                        "hashtag": "string"
+                    },
+                    "template": "📸 Share & Win!\n\n[campaign_name]\n\nHow to enter:\n[instructions]\n\nPrize: [prize]\n\nUse #[hashtag]\n\n#Contest"
+                }
+            }
+        }
+    },
+    "platform_guidelines": {
+        "post_timing": {
+            "concept_phase": "2-3 posts/week",
+            "design_phase": "3-4 posts/week",
+            "manufacturing": "2-3 posts/week",
+            "pre_launch": "daily posts",
+            "post_launch": "4-5 posts/week"
+        },
+        "hashtag_strategy": {
+            "concept_phase": ["#ComingSoon", "#NewProduct", "#Innovation"],
+            "design_phase": ["#Design", "#ProductDevelopment", "#Quality"],
+            "manufacturing": ["#BehindTheScenes", "#Quality", "#Craftsmanship"],
+            "marketing": ["#Launch", "#NewProduct", "#MustHave"],
+            "post_launch": ["#CustomerSuccess", "#ProductReview", "#Community"]
+        },
+        "media_requirements": {
+            "image_specs": {
+                "instagram": "1080x1080px",
+                "facebook": "1200x630px",
+                "twitter": "1200x675px"
+            },
+            "video_specs": {
+                "max_length": "60 seconds",
+                "format": "MP4",
+                "ratio": "16:9 or 1:1"
+            }
+        }
+    }
+}

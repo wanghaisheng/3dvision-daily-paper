@@ -1,0 +1,214 @@
+{
+    "metadata": {
+        "version": "1.0",
+        "last_updated": "2024-12-22",
+        "author": "wanghaisheng",
+        "type": "ecommerce_build_in_public",
+        "repository": "github-daily-event-to-blog-update"
+    },
+    "ecommerce_templates": {
+        "idea_phase": {
+            "concept_introduction": {
+                "required_vars": {
+                    "product_name": "string",
+                    "problem_solved": "string",
+                    "inspiration": "string",
+                    "target_audience": "array",
+                    "unique_value": "string"
+                },
+                "template": {
+                    "title_formats": [
+                        "Introducing [product_name]: Our Journey Begins",
+                        "Why We're Building [product_name]: The Story Behind Our Product"
+                    ],
+                    "sections": [
+                        "The Problem",
+                        "Our Solution",
+                        "Target Market",
+                        "Why Now",
+                        "Next Steps"
+                    ],
+                    "meta": {
+                        "recommended_media": ["concept sketches", "market research data"],
+                        "engagement_elements": ["feedback form", "email signup"]
+                    }
+                }
+            },
+            "market_research": {
+                "required_vars": {
+                    "research_findings": "array",
+                    "market_size": "string",
+                    "competitor_analysis": "array",
+                    "customer_insights": "array"
+                },
+                "template": {
+                    "title_formats": [
+                        "Market Research Insights: What We Learned About [market_segment]",
+                        "Understanding Our Market: Key Findings for [product_name]"
+                    ],
+                    "sections": [
+                        "Research Methodology",
+                        "Key Findings",
+                        "Market Opportunity",
+                        "Customer Needs",
+                        "Competition Analysis"
+                    ]
+                }
+            }
+        },
+        "design_phase": {
+            "product_design": {
+                "required_vars": {
+                    "design_iteration": "string",
+                    "features": "array",
+                    "materials": "array",
+                    "design_decisions": "array",
+                    "prototypes": "array"
+                },
+                "template": {
+                    "title_formats": [
+                        "Designing [product_name]: From Sketch to Prototype",
+                        "The Evolution of [product_name]: Design Journey"
+                    ],
+                    "sections": [
+                        "Design Goals",
+                        "Material Selection",
+                        "Prototype Development",
+                        "Testing Results",
+                        "Next Iterations"
+                    ]
+                }
+            }
+        },
+        "manufacturing": {
+            "production_updates": {
+                "required_vars": {
+                    "factory_partner": "string",
+                    "production_stage": "string",
+                    "challenges": "array",
+                    "quality_metrics": "array",
+                    "timeline": "object"
+                },
+                "template": {
+                    "title_formats": [
+                        "Manufacturing Update: Taking [product_name] from Design to Reality",
+                        "Production Progress: Behind the Scenes at the Factory"
+                    ],
+                    "sections": [
+                        "Production Status",
+                        "Quality Control",
+                        "Challenges Faced",
+                        "Solutions Found",
+                        "Next Steps"
+                    ]
+                }
+            }
+        },
+        "marketing_prep": {
+            "brand_development": {
+                "required_vars": {
+                    "brand_elements": "array",
+                    "visual_identity": "object",
+                    "brand_story": "string",
+                    "marketing_assets": "array"
+                },
+                "template": {
+                    "title_formats": [
+                        "Building the [product_name] Brand: Our Visual Journey",
+                        "Creating Our Brand Identity: The Story Behind [product_name]"
+                    ],
+                    "sections": [
+                        "Brand Vision",
+                        "Visual Elements",
+                        "Brand Voice",
+                        "Marketing Materials",
+                        "Community Building"
+                    ]
+                }
+            }
+        },
+        "launch_phase": {
+            "launch_announcement": {
+                "required_vars": {
+                    "launch_date": "string",
+                    "special_offers": "array",
+                    "product_details": "object",
+                    "ordering_info": "string"
+                },
+                "template": {
+                    "title_formats": [
+                        "[product_name] is Live: Get Yours Today!",
+                        "Launching [product_name]: From Dream to Reality"
+                    ],
+                    "sections": [
+                        "Product Launch",
+                        "Special Offers",
+                        "How to Order",
+                        "What's Next",
+                        "Thank You Note"
+                    ]
+                }
+            }
+        }
+    },
+    "content_guidelines": {
+        "post_frequency": {
+            "idea_phase": "weekly",
+            "design_phase": "bi-weekly",
+            "manufacturing": "weekly",
+            "pre_launch": "2-3 times per week",
+            "post_launch": "weekly"
+        },
+        "transparency_levels": {
+            "costs": "selective sharing",
+            "challenges": "full transparency",
+            "timelines": "regular updates",
+            "metrics": "key milestones only"
+        },
+        "media_requirements": {
+            "photos": "high-quality product shots",
+            "videos": "behind-the-scenes footage",
+            "documents": "relevant design files",
+            "charts": "data visualization when needed"
+        }
+    },
+    "distribution_channels": {
+        "primary": [
+            "company blog",
+            "email newsletter",
+            "instagram",
+            "twitter"
+        ],
+        "secondary": [
+            "linkedin",
+            "youtube",
+            "tiktok",
+            "pinterest"
+        ],
+        "community_platforms": [
+            "product hunt",
+            "kickstarter updates",
+            "facebook groups"
+        ]
+    },
+    "engagement_strategies": {
+        "feedback_collection": {
+            "methods": [
+                "surveys",
+                "comment sections",
+                "direct emails",
+                "social media polls"
+            ],
+            "response_time": "within 24 hours",
+            "feedback_implementation": "bi-weekly reviews"
+        },
+        "community_building": {
+            "activities": [
+                "early access programs",
+                "ambassador programs",
+                "user testimonials",
+                "community challenges"
+            ]
+        }
+    }
+}

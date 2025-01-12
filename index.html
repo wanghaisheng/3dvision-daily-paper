@@ -1,0 +1,743 @@
+
+<html><head><base href="/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="Self-hosted, cost-effective content generation pipeline using OpenAI-compatible APIs on Cloudflare Workers. Transform GitHub events into multi-platform content with zero hosting costs.">
+<meta name="keywords" content="content generation, GitHub, blog automation, static sites, AI content">
+<meta name="author" content="Turn your GitHub activity to blog, post, video">
+<meta http-equiv="Content-Language" content="en">
+
+<!-- Canonical Link -->
+<link rel="canonical" href="https://github-daily-event-to-blog.borninsea.com" />
+
+<!-- Open Graph for Social Media -->
+<meta property="og:title" content="Turn your GitHub activity to blog, post, video">
+<meta property="og:description" content="Transform your GitHub activities into engaging multi-platform content automatically with zero hosting costs.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80">
+<meta property="og:url" content="https://github-daily-event-to-blog.borninsea.com">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Turn your GitHub activity to blog, post, video">
+<meta name="twitter:description" content="Self-hosted content generation pipeline for GitHub activities">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80">
+
+<!-- Favicon -->
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'UA-XXXXX-Y');
+</script>
+
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=document.createElement('script');t.async=1;
+        t.src="https://www.clarity.ms/tag/XXXXXX";
+        y=document.getElementsByTagName('script')[0];
+        y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script");
+</script>
+
+<title>Turn your GitHub activity to blog, post, video - Self-Hosted, Cost-Effective Content Generation Pipeline</title>
+
+<style>
+  :root {
+    --primary: #2563eb;
+    --secondary: #4f46e5;
+    --success: #16a34a;
+    --text: #1f2937;
+    --bg: #ffffff;
+  }
+
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    margin: 0;
+    padding: 0;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 6rem 2rem;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero p {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+  }
+
+  .hero .highlights {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .highlight {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    backdrop-filter: blur(10px);
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: white;
+    color: var(--primary);
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s;
+  }
+
+  .cta-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .features {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .feature-card {
+    padding: 2rem;
+    border-radius: 0.5rem;
+    background: #f8fafc;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+
+  .feature-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1rem;
+    color: var(--primary);
+  }
+
+  .feature-card h3 {
+    color: var(--primary);
+    margin: 1rem 0;
+  }
+
+  .feature-card p {
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .platforms {
+    padding: 4rem 2rem;
+    background: white;
+    text-align: center;
+  }
+
+  .platform-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+  }
+
+  .platform-card {
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    background: #f8fafc;
+    transition: all 0.3s;
+  }
+
+  .platform-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+
+  .faq {
+    padding: 4rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background: #f8fafc;
+  }
+
+  .faq-item h3 {
+    margin: 0;
+    color: var(--primary);
+  }
+
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary);
+  }
+
+  .stat-label {
+    color: var(--text);
+  }
+
+  .deployment {
+    background: #f8fafc;
+    padding: 4rem 2rem;
+  }
+
+  .deployment-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .step {
+    background: white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .step h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+  }
+
+  .step pre {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  .step code {
+    font-family: monospace;
+  }
+
+  .step ul {
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .step a {
+    color: var(--primary);
+    text-decoration: none;
+  }
+
+  .step a:hover {
+    text-decoration: underline;
+  }
+
+  .additional-info {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #f0f7ff;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .additional-info ul li {
+    margin: 0.5rem 0;
+  }
+
+  .additional-info a {
+    color: var(--primary);
+    text-decoration: none;
+  }
+
+  .additional-info a:hover {
+    text-decoration: underline;
+  }
+
+  .coming-soon {
+    font-size: 24px;
+    color: #666;
+    text-align: center;
+    margin: 2rem 0;
+  }
+
+  footer {
+    background: var(--text);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .roadmap {
+    padding: 4rem 2rem;
+    background: #f8fafc;
+  }
+
+  .roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+  }
+
+  .roadmap-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .roadmap-card::before {
+    content: "Coming Soon";
+    position: absolute;
+    top: 1rem;
+    right: -2rem;
+    background: var(--primary);
+    color: white;
+    padding: 0.25rem 2rem;
+    transform: rotate(45deg);
+    font-size: 0.8rem;
+  }
+
+  .roadmap-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 1rem;
+    color: var(--primary);
+  }
+
+  .roadmap-card h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+  }
+
+  .roadmap-card p {
+    color: var(--text);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .demo-section {
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .demo-card {
+    max-width: 800px;
+    margin: 2rem auto;
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+  }
+
+  .demo-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .demo-card img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+
+  .demo-card-content {
+    padding: 2rem;
+  }
+
+  .demo-card h3 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+  }
+
+  .demo-card p {
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .demo-btn {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s;
+  }
+
+  .demo-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .target-users {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f8fafc, #ffffff);
+  }
+
+  .target-users-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .audience-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .audience-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+  }
+
+  .audience-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .audience-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1rem;
+    color: var(--primary);
+  }
+
+  .audience-card h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+  }
+
+  .audience-card p {
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .use-case-list {
+    text-align: left;
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .use-case-list li {
+    margin: 0.5rem 0;
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <h1>Turn your GitHub activity to blog, post, video</h1>
+  <p>Self-hosted, cost-effective content generation pipeline using OpenAI-compatible APIs on Cloudflare Workers. Transform GitHub events into multi-platform content with zero hosting costs.</p>
+  <div class="highlights">
+    <div class="highlight">&#x1f510; Self-hosted</div>
+    <div class="highlight">&#x1f4b0; Zero Cost</div>
+    <div class="highlight">&#x1f680; Multi-Stack</div>
+    <div class="highlight">&#x1f3a8; Theme Support</div>
+  </div>
+  <a href="https://github.com/wanghaisheng/github-daily-event-to-blog-update" class="cta-btn">Deploy Now</a>
+</section>
+
+<section class="target-users">
+  <div class="target-users-content">
+    <h2>Who Is This For?</h2>
+    <p style="max-width: 800px; margin: 1rem auto;">Perfect for developers and organizations looking to showcase their journey, share knowledge, and build their digital presence through automated content creation.</p>
+    
+    <div class="audience-cards">
+      <div class="audience-card">
+        <svg class="audience-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 7h-3a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+          <path d="M16 8V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v3"/>
+          <path d="M4 7H1a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+          <path d="M12 8v13"/>
+        </svg>
+        <h3>Active GitHub Users</h3>
+        <p>Transform your daily GitHub activities into engaging blog content automatically.</p>
+        <ul class="use-case-list">
+          <li>Document your coding journey</li>
+          <li>Share project updates</li>
+          <li>Build your developer portfolio</li>
+        </ul>
+      </div>
+
+      <div class="audience-card">
+        <svg class="audience-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        <h3>Organizations & Teams</h3>
+        <p>Create a centralized hub for your organization's technical content and updates.</p>
+        <ul class="use-case-list">
+          <li>Team activity highlights</li>
+          <li>Project progress tracking</li>
+          <li>Knowledge sharing platform</li>
+        </ul>
+      </div>
+
+      <div class="audience-card">
+        <svg class="audience-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+        <h3>Community Leaders</h3>
+        <p>Build and grow your technical community with automated content distribution.</p>
+        <ul class="use-case-list">
+          <li>Showcase community contributions</li>
+          <li>Share learning resources</li>
+          <li>Highlight member achievements</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stat">
+    <div class="stat-number">10+</div>
+    <div class="stat-label">Static Site Stacks</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">20+</div>
+    <div class="stat-label">Themes Available</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">&#x24;0</div>
+    <div class="stat-label">Hosting Cost</div>
+  </div>
+</section>
+
+<section class="features">
+  <h2 style="text-align: center; margin-bottom: 2rem;">Features</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+      </svg>
+      <h3>Self-Hosted Solution</h3>
+      <p>Deploy on Cloudflare Workers for complete control over your infrastructure with zero hosting costs. Generate content and images using your own deployments.</p>
+    </div>
+    
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+        <polyline points="13 2 13 9 20 9"/>
+      </svg>
+      <h3>AI-Powered Content</h3>
+      <p>Using DuckDuckGo AI Chat Service as a free OpenAI-compatible endpoint to automatically enrich and summarize your GitHub activities into engaging content.</p>
+    </div>
+    
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z"/>
+      </svg>
+      <h3>Image Generation</h3>
+      <p>Create beautiful cover images and visuals using self-hosted Flux deployment on Cloudflare Workers - no external API costs.</p>
+    </div>
+    
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+      </svg>
+      <h3>Universal Compatibility</h3>
+      <p>Works with all major static site generators and their themes - from Gatsby and Next.js to Hugo and Jekyll. Your content, your way.</p>
+    </div>
+  </div>
+</section>
+
+<section class="demo-section">
+  <h2>See It In Action</h2>
+  <div class="demo-card">
+    <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80" alt="Apple Style Blog Demo">
+    <div class="demo-card-content">
+      <h3>Apple-Style Developer Blog</h3>
+      <p>Experience our AI-powered content generation in action. Check out this minimalist, Apple-inspired developer blog automatically generated from GitHub activities.</p>
+      <a href="https://daily.borninsea.com" target="_blank" class="demo-btn">View Live Demo</a>
+    </div>
+  </div>
+</section>
+
+<section class="deployment">
+  <div class="demo-container">
+    <h2>Quick Deployment</h2>
+    <div class="deployment-steps">
+      <div class="step">
+        <h3>1. Fork &amp; Clone Content Generator</h3>
+        <pre><code>git clone https://github.com/wanghaisheng/github-daily-event-to-blog-update
+cd github-daily-event-to-blog-update</code></pre>
+        <p>This repository contains the main content generation pipeline.</p>
+      </div>
+      
+      <div class="step">
+        <h3>2. Deploy Free AI Endpoint</h3>
+        <p>Set up DuckDuckGo AI Chat Service as your OpenAI-compatible endpoint:</p>
+        <pre><code># Deploy DuckDuckGo AI Chat Service
+git clone https://github.com/mumu-lhl/duckduckgo-ai-chat-service
+cd duckduckgo-ai-chat-service
+npm install
+wrangler deploy</code></pre>
+        <p>This provides free AI capabilities for content enrichment without OpenAI API costs.</p>
+      </div>
+      
+      <div class="step">
+        <h3>3. Deploy Cloudflare Worker Flux</h3>
+        <p>Choose one of these open-source Flux implementations:</p>
+        <ul>
+          <li><a href="https://github.com/snakeying/flux-api-worker" target="_blank">Flux API Worker</a></li>
+          <li><a href="https://github.com/aigem/cf-flux-remix" target="_blank">Flux Remix Worker</a></li>
+        </ul>
+        <pre><code># Deploy using Wrangler
+git clone https://github.com/snakeying/flux-api-worker
+cd flux-api-worker
+npm install
+wrangler deploy</code></pre>
+      </div>
+
+      <div class="step">
+        <h3>4. Configure Settings</h3>
+        <pre><code># Update config.yml with your settings
+site:
+  url: your-site-url
+  stack: gatsby|hugo|jekyll
+  theme: your-theme-name
+deployment:
+  worker_url: your-flux-worker-url
+  openai_endpoint: your-duckduckgo-endpoint # DuckDuckGo AI Chat Service URL
+  image_worker: your-flux-deployment # For cover image generation</code></pre>
+        <p>Configure your GitHub repository settings and secrets in the Actions tab.</p>
+      </div>
+    </div>
+    
+    <div class="additional-info" style="margin-top: 2rem; padding: 1rem; background: #f0f7ff; border-radius: 0.5rem;">
+      <h3 style="color: var(--primary);">Additional Resources</h3>
+      <ul style="list-style-type: none; padding: 0;">
+        <li>&#x1f4dd; <a href="https://developers.cloudflare.com/workers/get-started/guide" target="_blank">Cloudflare Workers Guide</a></li>
+        <li>&#x1f527; <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update" target="_blank">Wrangler CLI Documentation</a></li>
+        <li>&#x1f680; <a href="https://github.com/wanghaisheng/github-daily-event-to-blog-update#readme" target="_blank">Detailed Setup Instructions</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="roadmap">
+  <h2 style="text-align: center; margin-bottom: 2rem;">Roadmap</h2>
+  <div class="roadmap-grid">
+    <div class="roadmap-card">
+      <svg class="roadmap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+      </svg>
+      <h3>Social Posts Generator</h3>
+      <p>Automatically transform your GitHub activity into engaging social media posts for Twitter, LinkedIn, and more.</p>
+    </div>
+    
+    <div class="roadmap-card">
+      <svg class="roadmap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M23 7l-7 5 7 5V7z"/>
+        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+      </svg>
+      <h3>Viral Video Creation</h3>
+      <p>Convert your development stories into short-form videos optimized for platforms like YouTube Shorts and TikTok.</p>
+    </div>
+    
+    <div class="roadmap-card">
+      <svg class="roadmap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+        <line x1="12" y1="19" x2="12" y2="23"/>
+        <line x1="8" y1="23" x2="16" y2="23"/>
+      </svg>
+      <h3>Podcast Generation</h3>
+      <p>Transform your technical content into podcast episodes with AI-powered text-to-speech and automatic show notes.</p>
+    </div>
+    
+    <div class="roadmap-card">
+      <svg class="roadmap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+        <line x1="3" y1="9" x2="21" y2="9"/>
+        <line x1="3" y1="15" x2="21" y2="15"/>
+        <line x1="9" y1="9" x2="9" y2="21"/>
+        <line x1="15" y1="9" x2="15" y2="21"/>
+      </svg>
+      <h3>SlideShare Presentations</h3>
+      <p>Auto-generate professional slide decks from your technical content and GitHub activities.</p>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <h2 style="text-align: center; margin-bottom: 2rem;">Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <h3>How does the self-hosted deployment work?</h3>
+    <p>The content generator runs on Cloudflare Workers, which offers a generous free tier. You can deploy your own OpenAI-compatible API or use existing open-source alternatives, making it completely cost-free to run.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Which static site generators are supported?</h3>
+    <p>We support all major static site generators including Gatsby, Next.js, Hugo, Jekyll, Astro, VitePress, and more. The content is automatically formatted to match your stack&apos;s requirements.</p>
+  </div>
+  <div class="faq-item">
+    <h3>How does theme integration work?</h3>
+    <p>The generator automatically detects your theme structure and formats content accordingly, including front matter, components, and styling conventions specific to your chosen theme.</p>
+  </div>
+</section>
+
+<footer>
+  <p>Turn your GitHub activity to blog, post, video &#xa9; 2024. All rights reserved.</p>
+</footer>
+
+</body></html>

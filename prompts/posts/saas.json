@@ -1,0 +1,184 @@
+{
+    "metadata": {
+        "version": "1.0",
+        "last_updated": "2024-12-22",
+        "author": "wanghaisheng",
+        "repository": "github-daily-event-to-blog-update",
+        "description": "Comprehensive social media post templates for all stages"
+    },
+    "global_config": {
+        "max_chars": 280,
+        "default_locale": "en",
+        "hashtag_limit": 4,
+        "default_max_tokens": 150
+    },
+    "post_templates": {
+        "awareness_stage": {
+            "product_introduction": {
+                "what_is_product": {
+                    "required_vars": {
+                        "product_name": "string",
+                        "core_features": "array",
+                        "problem": "string",
+                        "solution": "string"
+                    },
+                    "template": "What is [product_name]? 🚀\n\nSolving [problem] with:\n• [core_features]\n\n[solution]\n\n#SaaS #ProductLaunch"
+                },
+                "pain_point_solution": {
+                    "required_vars": {
+                        "pain_point": "string",
+                        "product_name": "string",
+                        "benefit": "string"
+                    },
+                    "template": "Say goodbye to [pain_point] with [product_name]! 👋\n\n[benefit]\n\n#SaaS #Solution"
+                }
+            },
+            "industry_insights": {
+                "trend_analysis": {
+                    "required_vars": {
+                        "trend": "string",
+                        "stats": "string",
+                        "impact": "string"
+                    },
+                    "template": "🔍 Industry Insight:\n\n[stats] in [trend]\n\nWhat this means: [impact]\n\n#IndustryTrends #Analysis"
+                },
+                "market_research": {
+                    "required_vars": {
+                        "research": "string",
+                        "key_finding": "string",
+                        "relevance": "string"
+                    },
+                    "template": "📊 Market Research Alert:\n\n[research]\n\nKey Finding: [key_finding]\n\n[relevance]\n\n#MarketResearch"
+                }
+            },
+            "behind_scenes": {
+                "team_spotlight": {
+                    "required_vars": {
+                        "team_aspect": "string",
+                        "story": "string",
+                        "insight": "string"
+                    },
+                    "template": "👥 Behind the Scenes:\n\n[team_aspect]\n\n[story]\n\n[insight]\n\n#BehindTheScenes #TeamSpotlight"
+                }
+            }
+        },
+        "engagement_stage": {
+            "feature_spotlight": {
+                "feature_highlight": {
+                    "required_vars": {
+                        "product_name": "string",
+                        "feature": "string",
+                        "benefit": "string"
+                    },
+                    "template": "✨ Did you know [product_name] can [feature]?\n\n[benefit]\n\n#ProductFeature #TipOfTheDay"
+                },
+                "top_features": {
+                    "required_vars": {
+                        "product_name": "string",
+                        "features": "array",
+                        "cta": "string"
+                    },
+                    "template": "🏆 Top 3 [product_name] Features:\n\n1. [features[0]]\n2. [features[1]]\n3. [features[2]]\n\n[cta]\n\n#MustTry"
+                }
+            },
+            "educational_content": {
+                "how_to": {
+                    "required_vars": {
+                        "topic": "string",
+                        "steps": "array",
+                        "tip": "string"
+                    },
+                    "template": "📚 How to [topic]:\n\n1. [steps[0]]\n2. [steps[1]]\n3. [steps[2]]\n\nPro tip: [tip]\n\n#HowTo #Tutorial"
+                }
+            }
+        },
+        "conversion_stage": {
+            "limited_time_offers": {
+                "discount_offer": {
+                    "required_vars": {
+                        "discount": "string",
+                        "duration": "string",
+                        "terms": "string"
+                    },
+                    "template": "🔥 Special Offer!\n\n[discount] off\nValid for: [duration]\n\n[terms]\n\n#SpecialOffer #Limited"
+                }
+            },
+            "free_trial": {
+                "trial_cta": {
+                    "required_vars": {
+                        "product_name": "string",
+                        "trial_period": "string",
+                        "benefits": "array"
+                    },
+                    "template": "🎁 Start Your Free Trial!\n\n[trial_period] with [product_name]\n\nIncluding:\n• [benefits]\n\n#FreeTrial"
+                }
+            }
+        },
+        "retention_stage": {
+            "onboarding_tips": {
+                "getting_started": {
+                    "required_vars": {
+                        "product_name": "string",
+                        "tips": "array",
+                        "bonus_tip": "string"
+                    },
+                    "template": "🌟 Getting Started with [product_name]:\n\n[tips]\n\nBonus tip: [bonus_tip]\n\n#GettingStarted"
+                }
+            },
+            "product_updates": {
+                "new_feature": {
+                    "required_vars": {
+                        "feature_name": "string",
+                        "description": "string",
+                        "availability": "string"
+                    },
+                    "template": "🆕 New Feature Alert!\n\n[feature_name] is here!\n\n[description]\n\nAvailable: [availability]\n\n#NewFeature"
+                }
+            }
+        },
+        "cross_stage_content": {
+            "memes_lighthearted": {
+                "required_vars": {
+                    "topic": "string",
+                    "punchline": "string",
+                    "context": "string"
+                },
+                "template": "😄 [topic]\n\n[punchline]\n\n[context]\n\n#FunnyFriday #TechHumor"
+            },
+            "partnership_announcements": {
+                "required_vars": {
+                    "partner": "string",
+                    "collaboration": "string",
+                    "benefit": "string"
+                },
+                "template": "🤝 Exciting Partnership!\n\nWe're teaming up with [partner] to [collaboration]\n\n[benefit]\n\n#Partnership"
+            },
+            "milestone_celebrations": {
+                "required_vars": {
+                    "milestone": "string",
+                    "achievement": "string",
+                    "gratitude": "string"
+                },
+                "template": "🎉 Milestone Alert!\n\n[milestone]\n\n[achievement]\n\n[gratitude]\n\n#Milestone #Celebration"
+            }
+        }
+    },
+    "post_rules": {
+        "character_limits": {
+            "twitter": 280,
+            "linkedin": 3000,
+            "facebook": 63206,
+            "instagram": 2200
+        },
+        "hashtag_rules": {
+            "twitter": "max 2-3",
+            "linkedin": "max 3-5",
+            "instagram": "max 30"
+        },
+        "image_rules": {
+            "twitter": "max 4 images",
+            "linkedin": "max 9 images",
+            "instagram": "max 10 images"
+        }
+    }
+}

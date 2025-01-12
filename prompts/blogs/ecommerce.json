@@ -1,0 +1,217 @@
+{
+    "metadata": {
+        "version": "1.0",
+        "last_updated": "2024-12-22",
+        "author": "wanghaisheng",
+        "type": "blog_content",
+        "repository": "github-daily-event-to-blog-update"
+    },
+    "blog_templates": {
+        "educational": {
+            "how_to_guides": {
+                "tutorial": {
+                    "required_vars": {
+                        "product_name": "string",
+                        "topic": "string",
+                        "steps": "array",
+                        "difficulty_level": "string",
+                        "time_required": "string"
+                    },
+                    "template": {
+                        "title_format": "How to [topic] with [product_name]",
+                        "sections": [
+                            "Introduction",
+                            "What You'll Need",
+                            "Step-by-Step Guide",
+                            "Pro Tips",
+                            "Conclusion"
+                        ],
+                        "meta": {
+                            "recommended_length": "1500-2000 words",
+                            "include_images": true,
+                            "seo_focus": "how-to",
+                            "categories": ["Tutorials", "Product Guide"]
+                        }
+                    }
+                },
+                "problem_solution": {
+                    "required_vars": {
+                        "problem": "string",
+                        "solution": "string",
+                        "benefits": "array",
+                        "use_cases": "array"
+                    },
+                    "template": {
+                        "title_format": "How to Solve [problem] with [solution]",
+                        "sections": [
+                            "Problem Definition",
+                            "Solution Overview",
+                            "Implementation Steps",
+                            "Results and Benefits"
+                        ]
+                    }
+                }
+            }
+        },
+        "informative": {
+            "industry_insights": {
+                "required_vars": {
+                    "topic": "string",
+                    "key_points": "array",
+                    "statistics": "array",
+                    "expert_quotes": "array"
+                },
+                "template": {
+                    "title_format": "[number] [topic] Trends You Need to Know in [year]",
+                    "sections": [
+                        "Industry Overview",
+                        "Current Trends",
+                        "Expert Insights",
+                        "Future Predictions"
+                    ]
+                }
+            },
+            "case_studies": {
+                "required_vars": {
+                    "client_name": "string",
+                    "challenge": "string",
+                    "solution": "string",
+                    "results": "array"
+                },
+                "template": {
+                    "title_format": "How [client_name] Achieved [result] Using [product_name]",
+                    "sections": [
+                        "Client Background",
+                        "Challenge",
+                        "Solution Implementation",
+                        "Results and ROI"
+                    ]
+                }
+            }
+        },
+        "brand_storytelling": {
+            "behind_scenes": {
+                "required_vars": {
+                    "topic": "string",
+                    "story_elements": "array",
+                    "team_members": "array",
+                    "visuals": "array"
+                },
+                "template": {
+                    "title_format": "Behind the Scenes: [topic]",
+                    "sections": [
+                        "Introduction",
+                        "The Process",
+                        "Meet the Team",
+                        "Challenges and Solutions"
+                    ]
+                }
+            }
+        },
+        "product_related": {
+            "product_updates": {
+                "required_vars": {
+                    "product_name": "string",
+                    "new_features": "array",
+                    "improvements": "array",
+                    "release_date": "string"
+                },
+                "template": {
+                    "title_format": "New in [product_name]: [main_feature]",
+                    "sections": [
+                        "What's New",
+                        "Feature Breakdown",
+                        "How to Use",
+                        "Next Steps"
+                    ]
+                }
+            }
+        },
+        "seo_driven": {
+            "keyword_focus": {
+                "required_vars": {
+                    "main_keyword": "string",
+                    "related_keywords": "array",
+                    "search_intent": "string",
+                    "target_audience": "string"
+                },
+                "template": {
+                    "title_format": "The Ultimate Guide to [main_keyword]",
+                    "sections": [
+                        "Introduction",
+                        "What is [main_keyword]",
+                        "Why it Matters",
+                        "How to Use",
+                        "FAQ"
+                    ],
+                    "meta": {
+                        "recommended_length": "2000+ words",
+                        "keyword_density": "1-2%",
+                        "header_structure": ["H1", "H2", "H3", "H4"]
+                    }
+                }
+            }
+        }
+    },
+    "content_guidelines": {
+        "word_count": {
+            "minimum": 800,
+            "optimal": 1500,
+            "maximum": 3000
+        },
+        "seo_requirements": {
+            "meta_description_length": "150-160 characters",
+            "title_tag_length": "50-60 characters",
+            "recommended_image_count": "2-5 per post",
+            "internal_links": "3-5 per post",
+            "external_links": "2-3 per post"
+        },
+        "structure": {
+            "recommended_sections": [
+                "Introduction",
+                "Main Content",
+                "Conclusion",
+                "Call to Action"
+            ],
+            "formatting": {
+                "paragraphs": "2-3 sentences",
+                "subheadings": "Every 300 words",
+                "bullet_points": "When listing 3+ items"
+            }
+        },
+        "engagement": {
+            "recommended_elements": [
+                "Images",
+                "Videos",
+                "Infographics",
+                "Charts/Graphs",
+                "Expert Quotes",
+                "Statistics"
+            ],
+            "call_to_action_types": [
+                "Product Link",
+                "Newsletter Signup",
+                "Download Resource",
+                "Contact Form"
+            ]
+        }
+    },
+    "posting_schedule": {
+        "frequency": {
+            "minimum": "1 post per week",
+            "optimal": "2-3 posts per week",
+            "maximum": "5 posts per week"
+        },
+        "content_mix": {
+            "educational": "40%",
+            "informative": "25%",
+            "product_related": "15%",
+            "brand_storytelling": "10%",
+            "seo_driven": "10%"
+        },
+        "best_posting_times": {
+            "weekdays": ["Tuesday", "Wednesday", "Thursday"],
+            "times": ["9:00 AM", "11:00 AM", "2:00 PM"]
+        }
+    }
+}

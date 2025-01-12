@@ -1,0 +1,127 @@
+# 仍然不是我想要的结构化
+{
+    "metadata": {
+        "version": "1.0",
+        "last_updated": "2024-12-22 09:01:16",
+        "author": "wanghaisheng",
+        "type": "saas_blog_content",
+        "repository": "github-daily-event-to-blog-update"
+    },
+    "saas_blog_templates": {
+        "educational": {
+            "how_to_guides": {
+                "required_vars": {
+                    "product_name": "string",
+                    "task": "string",
+                    "target_audience": "string",
+                    "pain_points": "array",
+                    "prerequisites": "array",
+                    "steps": "array"
+                },
+                "template": {
+                    "prompt": "Write an educational how-to guide for {product_name}.\n\nContext:\n- Task to accomplish: {task}\n- Target audience: {target_audience}\n- Pain points: {pain_points}\n- Prerequisites: {prerequisites}\n\nRequirements:\n1. Write in a clear, step-by-step format\n2. Include practical examples\n3. Address common mistakes and solutions\n4. Use screenshots or code snippets where relevant\n5. End with measurable outcomes\n\nMake it engaging and actionable for {target_audience} level users.",
+                    "title_formats": [
+                        "How to Use [product_name] for [task]",
+                        "Step-by-Step Guide to [task] with [product_name]"
+                    ],
+                    "max_tokens": 1500
+                }
+            }
+        },
+        "thought_leadership": {
+            "industry_trends": {
+                "required_vars": {
+                    "industry": "string",
+                    "current_trends": "array",
+                    "market_data": "object",
+                    "expert_insights": "array"
+                },
+                "template": {
+                    "prompt": "Write an insightful analysis of {industry} trends.\n\nContext:\n- Current trends: {current_trends}\n- Market data: {market_data}\n- Expert insights: {expert_insights}\n\nRequirements:\n1. Start with an executive summary\n2. Back claims with data and statistics\n3. Include expert quotes and insights\n4. Provide actionable takeaways\n5. Make future predictions\n\nFocus on providing valuable insights that establish thought leadership.",
+                    "max_tokens": 2000
+                }
+            }
+        },
+        "product_focused": {
+            "feature_announcements": {
+                "required_vars": {
+                    "feature_name": "string",
+                    "problem_solved": "string",
+                    "key_benefits": "array",
+                    "technical_details": "object",
+                    "use_cases": "array"
+                },
+                "template": {
+                    "prompt": "Announce the launch of {feature_name} for {product_name}.\n\nContext:\n- Problem solved: {problem_solved}\n- Key benefits: {key_benefits}\n- Technical details: {technical_details}\n- Use cases: {use_cases}\n\nRequirements:\n1. Create excitement about the new feature\n2. Explain the value proposition clearly\n3. Include practical use cases\n4. Provide implementation guidance\n5. End with a clear call to action\n\nMake it compelling and action-oriented.",
+                    "max_tokens": 1200
+                }
+            }
+        },
+        "case_studies": {
+            "success_stories": {
+                "required_vars": {
+                    "client_name": "string",
+                    "industry": "string",
+                    "initial_situation": "object",
+                    "implementation_process": "array",
+                    "results": "object"
+                },
+                "template": {
+                    "prompt": "Write a compelling case study about {client_name}'s success with {product_name}.\n\nContext:\n- Initial situation: {initial_situation}\n- Implementation process: {implementation_process}\n- Results: {results}\n\nRequirements:\n1. Tell a compelling story\n2. Include specific metrics and results\n3. Detail the implementation process\n4. Share lessons learned\n5. Include testimonials\n\nMake it relatable and evidence-based.",
+                    "max_tokens": 1800
+                }
+            }
+        },
+        "technical_content": {
+            "api_documentation": {
+                "required_vars": {
+                    "api_feature": "string",
+                    "endpoints": "array",
+                    "code_examples": "object",
+                    "use_cases": "array"
+                },
+                "template": {
+                    "prompt": "Create technical documentation for {api_feature}.\n\nContext:\n- Endpoints: {endpoints}\n- Code examples: {code_examples}\n- Use cases: {use_cases}\n\nRequirements:\n1. Explain the technical concepts clearly\n2. Include working code examples\n3. Cover common error scenarios\n4. Provide troubleshooting tips\n5. Include best practices\n\nMake it comprehensive yet understandable.",
+                    "max_tokens": 2000
+                }
+            }
+        }
+    },
+    "content_guidelines": {
+        "prompt_structure": {
+            "context_section": {
+                "background": "relevant information",
+                "audience": "target readers",
+                "objectives": "what to achieve"
+            },
+            "requirements_section": {
+                "style": "writing style guidelines",
+                "structure": "content organization",
+                "examples": "sample formats"
+            },
+            "output_format": {
+                "tone": "professional but engaging",
+                "length": "specified by content type",
+                "formatting": "markdown with proper headers"
+            }
+        },
+        "word_count_ranges": {
+            "how_to_guides": "1500-2000",
+            "case_studies": "1000-1500",
+            "thought_leadership": "1200-1800",
+            "technical_content": "2000+"
+        }
+    },
+    "configuration": {
+        "model": "gpt-4",
+        "temperature": 0.7,
+        "format": "markdown",
+        "response_format": {
+            "title": "string",
+            "meta_description": "string",
+            "content": "string",
+            "suggested_images": "array",
+            "tags": "array"
+        }
+    }
+}

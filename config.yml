@@ -1,0 +1,55 @@
+# Configuration file for repository processing and image generation
+
+# Author list for markdown files
+author_list:
+  - "Heisenberg"
+  # - "Jane Smith"
+  # - "Alice Cooper"
+  # - "Bob Johnson"
+
+# Output folder for generated markdown files
+output_folder: "themes/appleblog/src/pages/posts"
+
+tag_file_path: "themes/appleblog/src/data/tags.json"
+
+
+blogtheme: "appleblog"
+# Folder to store the generated images
+image_folder: "themes/appleblog/public/assets"
+assets_save_folder: "themes/appleblog/public/assets"
+# diff theme serve static files different ,change it and adapt code if need
+assets_read_folder: "/assets/"
+
+
+
+# Base URL for serving images, update this to match your server setup
+base_url: "http://localhost:3000/"
+
+OPENAI_API_URL: "https://heisenberg-duckduckgo-66.deno.dev/v1/chat/completions"
+# chat_url : "https://api.siliconflow.cn/v1/chat/completions"
+# different service support diff models, suit yourself
+    # "gpt-4o-mini"
+    # "claude-3-haiku"
+    # "llama"
+    # "mixtral"
+api_model: "gpt-4o-mini"
+
+# GitHub username to fetch repositories from
+username: "wanghaisheng"
+
+image_api_url: "https://fluxapi.borninsea.com/v1/chat/completions"
+  # "models": [
+    # {"id": "DS-8-CF", "name": "DreamShaper 8"},
+    # {"id": "SD-XL-Bash-CF", "name": "Stable Diffusion XL Base"},
+    # {"id": "SD-XL-Lightning-CF", "name": "Stable Diffusion XL Lightning"},
+    # {"id": "FLUX.1-Schnell-CF", "name": "Flux 1 Schnell"}
+
+flux_model: "FLUX.1-Schnell-CF"
+
+# OpenAI model for chat
+openai:
+  model: "gpt-4o-mini"  # Set the model name you want to use
+
+# Specify the number of days within which repositories are considered "recently updated" 
+# default  1, 7,30
+days_threshold: 30

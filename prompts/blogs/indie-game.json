@@ -1,0 +1,215 @@
+{
+    "metadata": {
+        "version": "1.0",
+        "last_updated": "2024-12-22",
+        "author": "wanghaisheng",
+        "type": "indie_game_build_in_public",
+        "repository": "github-daily-event-to-blog-update"
+    },
+    "indie_game_templates": {
+        "concept_development": {
+            "game_announcement": {
+                "required_vars": {
+                    "game_name": "string",
+                    "genre": "string",
+                    "core_mechanics": "array",
+                    "unique_features": "array",
+                    "inspiration": "string"
+                },
+                "template": {
+                    "title_formats": [
+                        "Introducing [game_name]: Our New [genre] Game",
+                        "Announcing [game_name]: A Unique Take on [genre]"
+                    ],
+                    "sections": [
+                        "Game Overview",
+                        "Core Features",
+                        "What Makes It Unique",
+                        "Development Timeline",
+                        "How to Follow Along"
+                    ],
+                    "meta": {
+                        "recommended_media": ["concept art", "prototype video"],
+                        "engagement_elements": ["feedback form", "newsletter signup"]
+                    }
+                }
+            },
+            "gameplay_mechanics": {
+                "required_vars": {
+                    "mechanic_name": "string",
+                    "description": "string",
+                    "inspiration": "string",
+                    "implementation": "array",
+                    "visual_examples": "array"
+                },
+                "template": {
+                    "title_formats": [
+                        "Deep Dive: [mechanic_name] in [game_name]",
+                        "How We're Building [mechanic_name]"
+                    ],
+                    "sections": [
+                        "Mechanic Overview",
+                        "Design Process",
+                        "Technical Implementation",
+                        "Player Experience",
+                        "Next Steps"
+                    ]
+                }
+            }
+        },
+        "art_and_design": {
+            "visual_development": {
+                "required_vars": {
+                    "art_element": "string",
+                    "style_description": "string",
+                    "process_steps": "array",
+                    "reference_materials": "array",
+                    "iterations": "array"
+                },
+                "template": {
+                    "title_formats": [
+                        "Art Style Development: Creating [art_element]",
+                        "The Evolution of [art_element] in [game_name]"
+                    ],
+                    "sections": [
+                        "Design Goals",
+                        "Reference and Inspiration",
+                        "Development Process",
+                        "Final Design",
+                        "Community Feedback"
+                    ]
+                }
+            }
+        },
+        "development_updates": {
+            "progress_report": {
+                "required_vars": {
+                    "timeframe": "string",
+                    "completed_items": "array",
+                    "challenges": "array",
+                    "next_goals": "array",
+                    "metrics": "object"
+                },
+                "template": {
+                    "title_formats": [
+                        "[timeframe] Development Update",
+                        "Progress Report: Building [game_name]"
+                    ],
+                    "sections": [
+                        "What We've Accomplished",
+                        "Current Challenges",
+                        "Community Feedback",
+                        "Next Milestones",
+                        "How to Get Involved"
+                    ]
+                }
+            }
+        },
+        "community_engagement": {
+            "playtesting": {
+                "required_vars": {
+                    "test_phase": "string",
+                    "requirements": "array",
+                    "features_to_test": "array",
+                    "feedback_format": "string",
+                    "timeline": "string"
+                },
+                "template": {
+                    "title_formats": [
+                        "Join Our [test_phase] Playtest!",
+                        "Help Us Test [game_name]: [test_phase] Phase"
+                    ],
+                    "sections": [
+                        "What We're Testing",
+                        "How to Participate",
+                        "Feedback Guidelines",
+                        "Timeline",
+                        "Rewards"
+                    ]
+                }
+            }
+        },
+        "technical_insights": {
+            "dev_challenges": {
+                "required_vars": {
+                    "challenge_type": "string",
+                    "problem_description": "string",
+                    "solution_steps": "array",
+                    "learnings": "array",
+                    "code_snippets": "array"
+                },
+                "template": {
+                    "title_formats": [
+                        "Solving [challenge_type] in Game Development",
+                        "Technical Deep Dive: [challenge_type]"
+                    ],
+                    "sections": [
+                        "The Challenge",
+                        "Our Approach",
+                        "Implementation",
+                        "Results",
+                        "Lessons Learned"
+                    ]
+                }
+            }
+        },
+        "marketing_journey": {
+            "promotional_updates": {
+                "required_vars": {
+                    "milestone": "string",
+                    "achievements": "array",
+                    "marketing_stats": "object",
+                    "next_steps": "array"
+                },
+                "template": {
+                    "title_formats": [
+                        "Marketing Update: Road to [milestone]",
+                        "[game_name] Marketing Journey: [milestone]"
+                    ],
+                    "sections": [
+                        "Current Progress",
+                        "What's Working",
+                        "Challenges",
+                        "Community Growth",
+                        "Next Steps"
+                    ]
+                }
+            }
+        }
+    },
+    "content_guidelines": {
+        "post_frequency": {
+            "development_updates": "weekly",
+            "art_showcases": "bi-weekly",
+            "technical_posts": "monthly",
+            "community_updates": "as needed"
+        },
+        "transparency_level": {
+            "development_process": "high",
+            "technical_details": "medium",
+            "business_metrics": "selective",
+            "future_plans": "balanced"
+        },
+        "media_requirements": {
+            "screenshots": "min 2 per post",
+            "videos": "when showing gameplay/mechanics",
+            "art_assets": "progressive versions for art posts",
+            "code_snippets": "when relevant to technical posts"
+        }
+    },
+    "distribution_channels": {
+        "primary": [
+            "dev blog",
+            "twitter",
+            "discord",
+            "reddit",
+            "steam community"
+        ],
+        "secondary": [
+            "indie game forums",
+            "youtube devlogs",
+            "itch.io",
+            "game dev communities"
+        ]
+    }
+}

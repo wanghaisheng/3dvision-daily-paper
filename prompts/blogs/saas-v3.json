@@ -1,0 +1,159 @@
+{
+    "metadata": {
+        "version": "2.0",
+        "last_updated": "2024-12-22 09:03:18",
+        "author": "wanghaisheng",
+        "type": "blog_prompt_structure"
+    },
+    "blog_types": {
+        "technical_tutorial": {
+            "purpose": "Teach readers how to implement specific technical solutions",
+            "prompt_structure": {
+                "context_gathering": {
+                    "required_fields": {
+                        "topic": "string - What specific technical concept/task is being taught",
+                        "difficulty_level": "enum - [beginner, intermediate, advanced]",
+                        "prerequisites": "array - Required knowledge/tools",
+                        "expected_outcome": "string - What readers will achieve"
+                    },
+                    "prompt_template": "Create a technical tutorial about {topic} for {difficulty_level} level developers.\n\nPrerequisites:\n{prerequisites}\n\nReaders will learn how to: {expected_outcome}\n\nRequirements:\n1. Clear step-by-step instructions\n2. Code examples where applicable\n3. Common pitfalls and solutions\n4. Testing and validation steps"
+                },
+                "content_structure": {
+                    "sections": [
+                        "Introduction (What & Why)",
+                        "Prerequisites",
+                        "Step-by-Step Implementation",
+                        "Testing and Validation",
+                        "Troubleshooting",
+                        "Next Steps"
+                    ],
+                    "formatting": {
+                        "code_blocks": "```language\ncode\n```",
+                        "section_headers": "## Title",
+                        "subsections": "### Subtitle"
+                    }
+                }
+            }
+        },
+        "changelog_update": {
+            "purpose": "Document changes and updates to the codebase",
+            "prompt_structure": {
+                "context_gathering": {
+                    "required_fields": {
+                        "version": "string - Version number/tag",
+                        "changes": "array - List of changes",
+                        "impact": "object - Impact on existing functionality",
+                        "migration_steps": "array - Required migration steps"
+                    },
+                    "prompt_template": "Create a changelog entry for version {version}.\n\nChanges:\n{changes}\n\nImpact:\n{impact}\n\nMigration Requirements:\n{migration_steps}\n\nRequirements:\n1. Clear categorization of changes\n2. Impact assessment\n3. Migration instructions\n4. Breaking changes highlighted"
+                },
+                "content_structure": {
+                    "sections": [
+                        "Version Summary",
+                        "New Features",
+                        "Improvements",
+                        "Bug Fixes",
+                        "Breaking Changes",
+                        "Migration Guide"
+                    ]
+                }
+            }
+        },
+        "project_announcement": {
+            "purpose": "Announce new projects or major updates",
+            "prompt_structure": {
+                "context_gathering": {
+                    "required_fields": {
+                        "project_name": "string",
+                        "key_features": "array",
+                        "target_audience": "string",
+                        "value_proposition": "string",
+                        "roadmap": "array"
+                    },
+                    "prompt_template": "Create a project announcement for {project_name}.\n\nKey Features:\n{key_features}\n\nTarget Audience:\n{target_audience}\n\nValue Proposition:\n{value_proposition}\n\nRoadmap:\n{roadmap}\n\nRequirements:\n1. Engaging introduction\n2. Clear value proposition\n3. Feature highlights\n4. Future roadmap\n5. Call to action"
+                },
+                "content_structure": {
+                    "sections": [
+                        "Project Overview",
+                        "Key Features",
+                        "Use Cases",
+                        "Getting Started",
+                        "Roadmap",
+                        "Call to Action"
+                    ]
+                }
+            }
+        },
+        "technical_deep_dive": {
+            "purpose": "In-depth exploration of technical concepts",
+            "prompt_structure": {
+                "context_gathering": {
+                    "required_fields": {
+                        "topic": "string",
+                        "technical_concepts": "array",
+                        "code_examples": "array",
+                        "use_cases": "array"
+                    },
+                    "prompt_template": "Create a technical deep dive about {topic}.\n\nConcepts to Cover:\n{technical_concepts}\n\nCode Examples:\n{code_examples}\n\nUse Cases:\n{use_cases}\n\nRequirements:\n1. Thorough explanation of concepts\n2. Practical code examples\n3. Real-world applications\n4. Performance considerations\n5. Best practices"
+                },
+                "content_structure": {
+                    "sections": [
+                        "Concept Overview",
+                        "Technical Details",
+                        "Implementation",
+                        "Performance Analysis",
+                        "Best Practices",
+                        "Further Reading"
+                    ]
+                }
+            }
+        },
+        "bug_investigation": {
+            "purpose": "Document bug investigations and solutions",
+            "prompt_structure": {
+                "context_gathering": {
+                    "required_fields": {
+                        "issue": "string",
+                        "reproduction_steps": "array",
+                        "investigation_process": "array",
+                        "solution": "string",
+                        "prevention": "array"
+                    },
+                    "prompt_template": "Document the investigation of {issue}.\n\nReproduction Steps:\n{reproduction_steps}\n\nInvestigation Process:\n{investigation_process}\n\nSolution:\n{solution}\n\nPrevention:\n{prevention}\n\nRequirements:\n1. Clear issue description\n2. Detailed reproduction steps\n3. Investigation methodology\n4. Solution implementation\n5. Prevention measures"
+                },
+                "content_structure": {
+                    "sections": [
+                        "Issue Overview",
+                        "Reproduction Steps",
+                        "Investigation Process",
+                        "Root Cause",
+                        "Solution",
+                        "Prevention"
+                    ]
+                }
+            }
+        }
+    },
+    "global_formatting": {
+        "markdown_guidelines": {
+            "headers": {
+                "h1": "# Title",
+                "h2": "## Section",
+                "h3": "### Subsection"
+            },
+            "code": {
+                "inline": "`code`",
+                "block": "```language\ncode\n```"
+            },
+            "lists": {
+                "unordered": "- item",
+                "ordered": "1. item"
+            }
+        },
+        "seo_requirements": {
+            "title_length": "50-60 characters",
+            "meta_description": "150-160 characters",
+            "keywords": "3-5 relevant terms"
+        }
+    }
+}

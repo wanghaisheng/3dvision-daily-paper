@@ -1,0 +1,187 @@
+{
+    "metadata": {
+        "version": "1.0",
+        "last_updated": "2024-12-22",
+        "author": "wanghaisheng",
+        "type": "build_in_public_saas",
+        "repository": "github-daily-event-to-blog-update"
+    },
+    "build_in_public_templates": {
+        "development_journey": {
+            "progress_updates": {
+                "required_vars": {
+                    "timeframe": "string",
+                    "achievements": "array",
+                    "challenges": "array",
+                    "next_steps": "array",
+                    "metrics": "object"
+                },
+                "template": {
+                    "title_formats": [
+                        "[timeframe] Progress Update: What We've Built",
+                        "Building in Public: Our [timeframe] Journey",
+                        "From Idea to Reality: [timeframe] Progress Report"
+                    ],
+                    "sections": [
+                        "Summary of Progress",
+                        "Key Achievements",
+                        "Challenges Faced",
+                        "Lessons Learned",
+                        "What's Next",
+                        "How You Can Help"
+                    ],
+                    "meta": {
+                        "frequency": "weekly or bi-weekly",
+                        "include_metrics": true,
+                        "transparency_level": "high"
+                    }
+                }
+            },
+            "behind_scenes": {
+                "required_vars": {
+                    "feature_name": "string",
+                    "development_process": "array",
+                    "technical_challenges": "array",
+                    "solutions": "array",
+                    "team_insights": "array"
+                },
+                "template": {
+                    "title_formats": [
+                        "Behind the Scenes: Building [feature_name]",
+                        "How We Built [feature_name]: The Full Story"
+                    ],
+                    "sections": [
+                        "Initial Planning",
+                        "Development Process",
+                        "Technical Challenges",
+                        "Solutions & Workarounds",
+                        "Team Insights",
+                        "Next Steps"
+                    ]
+                }
+            }
+        },
+        "community_engagement": {
+            "user_feedback": {
+                "required_vars": {
+                    "topic": "string",
+                    "current_status": "string",
+                    "feedback_points": "array",
+                    "action_items": "array",
+                    "timeline": "string"
+                },
+                "template": {
+                    "title_formats": [
+                        "We Need Your Input: [topic]",
+                        "Help Us Improve: Feedback on [topic]",
+                        "Your Voice Matters: [topic] Feedback Request"
+                    ],
+                    "sections": [
+                        "Current Status",
+                        "What We're Looking For",
+                        "How to Provide Feedback",
+                        "What Happens Next",
+                        "Timeline"
+                    ]
+                }
+            }
+        },
+        "transparency": {
+            "financial_updates": {
+                "required_vars": {
+                    "period": "string",
+                    "revenue": "object",
+                    "expenses": "object",
+                    "metrics": "object",
+                    "goals": "array"
+                },
+                "template": {
+                    "title_formats": [
+                        "[period] Financial Update: Our Numbers Exposed",
+                        "Building in Public: [period] Financial Report"
+                    ],
+                    "sections": [
+                        "Revenue Breakdown",
+                        "Expense Analysis",
+                        "Key Metrics",
+                        "Lessons Learned",
+                        "Future Goals"
+                    ],
+                    "meta": {
+                        "include_charts": true,
+                        "sensitive_info": "exclude specific customer data"
+                    }
+                }
+            }
+        },
+        "product_updates": {
+            "feature_launches": {
+                "required_vars": {
+                    "feature_name": "string",
+                    "benefits": "array",
+                    "development_story": "string",
+                    "user_feedback": "array",
+                    "next_steps": "string"
+                },
+                "template": {
+                    "title_formats": [
+                        "Launching [feature_name]: The Inside Story",
+                        "New Feature Alert: Introducing [feature_name]"
+                    ],
+                    "sections": [
+                        "Feature Overview",
+                        "Why We Built This",
+                        "Development Journey",
+                        "How to Use It",
+                        "What's Next"
+                    ]
+                }
+            }
+        }
+    },
+    "content_guidelines": {
+        "transparency_levels": {
+            "metrics": ["users", "revenue", "growth", "churn"],
+            "challenges": ["technical", "business", "personal"],
+            "feedback": ["positive", "negative", "suggestions"]
+        },
+        "posting_frequency": {
+            "progress_updates": "weekly",
+            "financial_reports": "monthly",
+            "feature_launches": "as completed",
+            "community_updates": "bi-weekly"
+        },
+        "engagement_elements": {
+            "required": [
+                "call for feedback",
+                "next steps",
+                "how to contribute",
+                "contact information"
+            ],
+            "recommended": [
+                "polls",
+                "surveys",
+                "comment prompts",
+                "social media links"
+            ]
+        }
+    },
+    "content_distribution": {
+        "primary_channels": [
+            "company blog",
+            "twitter",
+            "linkedin",
+            "indie hackers",
+            "product hunt"
+        ],
+        "engagement_guidelines": {
+            "response_time": "within 24 hours",
+            "tone": "transparent and authentic",
+            "community_rules": [
+                "be respectful",
+                "provide constructive feedback",
+                "share learnings"
+            ]
+        }
+    }
+}

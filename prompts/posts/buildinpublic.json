@@ -1,0 +1,197 @@
+{
+    "metadata": {
+        "version": "1.0",
+        "last_updated": "2024-12-22",
+        "author": "wanghaisheng",
+        "target": "public_saas",
+        "repository": "github-daily-event-to-blog-update"
+    },
+    "global_config": {
+        "max_chars": 280,
+        "default_locale": "en",
+        "hashtag_limit": 4
+    },
+    "public_saas_templates": {
+        "general_awareness": {
+            "product_introduction": {
+                "what_is": {
+                    "required_vars": {
+                        "product_name": "string",
+                        "core_benefit": "string",
+                        "value_prop": "string"
+                    },
+                    "template": "What is [product_name]? 🤔\n\n[value_prop]\n\nMake your life easier with [core_benefit]!\n\n#SaaS #ProductLaunch"
+                },
+                "why_it_matters": {
+                    "required_vars": {
+                        "product_name": "string",
+                        "benefits": "array",
+                        "target": "string"
+                    },
+                    "template": "Why everyone needs [product_name] 🎯\n\nPerfect for [target]:\n• [benefits[0]]\n• [benefits[1]]\n• [benefits[2]]\n\n#MustHave #Productivity"
+                },
+                "psa_style": {
+                    "required_vars": {
+                        "common_issue": "string",
+                        "product_name": "string",
+                        "solution": "string"
+                    },
+                    "template": "📢 PSA: Tired of [common_issue]?\n\n[product_name] offers [solution]\n\nTry it today!\n\n#SimpleSolution #Productivity"
+                }
+            },
+            "brand_story": {
+                "journey": {
+                    "required_vars": {
+                        "problem": "string",
+                        "solution": "string",
+                        "impact": "string"
+                    },
+                    "template": "Our Story 📖\n\nWe saw [problem]\nSo we created [solution]\nNow [impact]\n\n#BrandStory #Innovation"
+                }
+            }
+        },
+        "trust_building": {
+            "tips_and_tricks": {
+                "quick_tip": {
+                    "required_vars": {
+                        "product_name": "string",
+                        "tip": "string",
+                        "benefit": "string"
+                    },
+                    "template": "💡 Quick Tip!\n\nDid you know [product_name] can [tip]?\n\nBenefit: [benefit]\n\n#QuickTip #Productivity"
+                },
+                "productivity_hack": {
+                    "required_vars": {
+                        "hack_name": "string",
+                        "steps": "array",
+                        "result": "string"
+                    },
+                    "template": "🚀 Productivity Hack:\n\n[hack_name]\n\n1. [steps[0]]\n2. [steps[1]]\n3. [steps[2]]\n\nResult: [result]\n\n#ProductivityHack"
+                }
+            },
+            "social_proof": {
+                "testimonial": {
+                    "required_vars": {
+                        "user_quote": "string",
+                        "user_type": "string",
+                        "benefit": "string"
+                    },
+                    "template": "⭐ User Love:\n\n\"[user_quote]\"\n- [user_type]\n\n[benefit]\n\n#UserTestimonial #Success"
+                }
+            }
+        },
+        "education_community": {
+            "tutorials": {
+                "getting_started": {
+                    "required_vars": {
+                        "feature": "string",
+                        "steps": "array",
+                        "tip": "string"
+                    },
+                    "template": "🎓 Tutorial Time!\n\nHow to [feature]:\n1. [steps[0]]\n2. [steps[1]]\n3. [steps[2]]\n\nPro tip: [tip]\n\n#Tutorial #HowTo"
+                }
+            },
+            "community_building": {
+                "challenge": {
+                    "required_vars": {
+                        "challenge_name": "string",
+                        "instructions": "string",
+                        "hashtag": "string"
+                    },
+                    "template": "🎯 Join the Challenge!\n\n[challenge_name]\n\n[instructions]\n\nShare using #[hashtag]\n\n#CommunityChallenge"
+                }
+            }
+        },
+        "motivation_empowerment": {
+            "motivational": {
+                "required_vars": {
+                    "pain_point": "string",
+                    "solution": "string",
+                    "cta": "string"
+                },
+                "template": "💪 You've got this!\n\nTired of [pain_point]?\n\n[solution]\n\n[cta]\n\n#Motivation #TakeAction"
+            },
+            "achievement": {
+                "required_vars": {
+                    "milestone": "string",
+                    "impact": "string",
+                    "encouragement": "string"
+                },
+                "template": "🏆 Success Story!\n\n[milestone]\n\n[impact]\n\n[encouragement]\n\n#Achievement #Success"
+            }
+        },
+        "fun_relatable": {
+            "memes": {
+                "required_vars": {
+                    "situation": "string",
+                    "punchline": "string",
+                    "relation": "string"
+                },
+                "template": "😄 [situation]\n\n[punchline]\n\n[relation]\n\n#FunnyFriday #TechHumor"
+            },
+            "fun_facts": {
+                "required_vars": {
+                    "fact": "string",
+                    "relevance": "string",
+                    "question": "string"
+                },
+                "template": "🤓 Did you know?\n\n[fact]\n\n[relevance]\n\n[question]\n\n#DidYouKnow #Interesting"
+            }
+        },
+        "updates_alerts": {
+            "feature_update": {
+                "required_vars": {
+                    "feature_name": "string",
+                    "benefit": "string",
+                    "availability": "string"
+                },
+                "template": "🆕 New Feature Alert!\n\n[feature_name] is here!\n\n[benefit]\n\nAvailable: [availability]\n\n#NewFeature #Update"
+            },
+            "seasonal": {
+                "required_vars": {
+                    "season": "string",
+                    "offer": "string",
+                    "duration": "string"
+                },
+                "template": "🎉 [season] Special!\n\n[offer]\n\nValid for: [duration]\n\n#Seasonal #SpecialOffer"
+            }
+        },
+        "calls_to_action": {
+            "signup": {
+                "required_vars": {
+                    "value_prop": "string",
+                    "offer": "string",
+                    "deadline": "string"
+                },
+                "template": "🎁 Ready to [value_prop]?\n\n[offer]\n\nOffer ends: [deadline]\n\n#GetStarted #SpecialOffer"
+            },
+            "referral": {
+                "required_vars": {
+                    "reward": "string",
+                    "steps": "string",
+                    "terms": "string"
+                },
+                "template": "🤝 Share the Love!\n\nRefer a friend and get [reward]!\n\nHow: [steps]\n\n[terms]\n\n#Referral #Rewards"
+            }
+        }
+    },
+    "post_rules": {
+        "character_limits": {
+            "twitter": 280,
+            "linkedin": 3000,
+            "facebook": 63206,
+            "instagram": 2200
+        },
+        "hashtag_best_practices": {
+            "twitter": "2-3 relevant hashtags",
+            "linkedin": "3-5 professional hashtags",
+            "instagram": "up to 30 relevant hashtags",
+            "facebook": "1-2 trending hashtags"
+        },
+        "posting_frequency": {
+            "minimum": "1 post per day",
+            "optimal": "2-3 posts per day",
+            "best_times": ["9:00 AM", "1:00 PM", "5:00 PM"]
+        }
+    }
+}

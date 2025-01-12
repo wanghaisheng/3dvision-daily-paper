@@ -1,0 +1,183 @@
+{
+    "metadata": {
+        "version": "1.0",
+        "last_updated": "2024-12-22",
+        "author": "wanghaisheng",
+        "type": "self_developed_game",
+        "repository": "github-daily-event-to-blog-update"
+    },
+    "game_social_templates": {
+        "awareness_stage": {
+            "game_introduction": {
+                "initial_reveal": {
+                    "required_vars": {
+                        "game_title": "string",
+                        "genre": "string",
+                        "unique_feature": "string",
+                        "key_mechanic": "string"
+                    },
+                    "template": "🎮 Introducing [game_title]!\n\nA [genre] game where you [key_mechanic]\n\nUnique feature: [unique_feature]\n\n#IndieGame #GameDev"
+                },
+                "gameplay_preview": {
+                    "required_vars": {
+                        "feature_name": "string",
+                        "description": "string",
+                        "gif_link": "string"
+                    },
+                    "template": "👀 Sneak Peek!\n\n[feature_name] in action!\n\n[description]\n\n[gif_link]\n\n#GameplayPreview #IndieGameDev"
+                }
+            },
+            "world_building": {
+                "lore_post": {
+                    "required_vars": {
+                        "world_name": "string",
+                        "story_element": "string",
+                        "hook": "string"
+                    },
+                    "template": "📖 Welcome to [world_name]\n\n[hook]\n\n[story_element]\n\n#GameLore #Gaming"
+                },
+                "character_reveal": {
+                    "required_vars": {
+                        "character_name": "string",
+                        "description": "string",
+                        "special_ability": "string"
+                    },
+                    "template": "🦸‍♂️ Meet [character_name]!\n\n[description]\n\nSpecial ability: [special_ability]\n\n#CharacterReveal #GameArt"
+                }
+            }
+        },
+        "pre_launch_engagement": {
+            "dev_updates": {
+                "behind_scenes": {
+                    "required_vars": {
+                        "development_aspect": "string",
+                        "progress": "string",
+                        "challenges": "string",
+                        "next_steps": "string"
+                    },
+                    "template": "🛠️ Dev Update!\n\nWorking on: [development_aspect]\nProgress: [progress]\nChallenges: [challenges]\nNext: [next_steps]\n\n#DevLog #GameDevelopment"
+                },
+                "feature_spotlight": {
+                    "required_vars": {
+                        "feature_name": "string",
+                        "description": "string",
+                        "benefit": "string"
+                    },
+                    "template": "✨ Feature Spotlight!\n\n[feature_name]\n\n[description]\n\nWhat this means: [benefit]\n\n#GameFeatures #IndieGame"
+                }
+            },
+            "community_engagement": {
+                "polls": {
+                    "required_vars": {
+                        "question": "string",
+                        "options": "array",
+                        "context": "string"
+                    },
+                    "template": "🗳️ Community Poll!\n\n[question]\n\nOptions:\n1. [options[0]]\n2. [options[1]]\n3. [options[2]]\n\n[context]\n\n#GamePoll #Community"
+                }
+            }
+        },
+        "launch_phase": {
+            "announcements": {
+                "release_date": {
+                    "required_vars": {
+                        "game_title": "string",
+                        "release_date": "string",
+                        "platforms": "array",
+                        "price": "string"
+                    },
+                    "template": "🎉 Mark your calendars!\n\n[game_title] launches [release_date]!\n\nAvailable on:\n[platforms]\n\nPrice: [price]\n\n#GameLaunch #IndieGame"
+                },
+                "launch_day": {
+                    "required_vars": {
+                        "game_title": "string",
+                        "store_link": "string",
+                        "launch_offer": "string"
+                    },
+                    "template": "🚀 OUT NOW!\n\n[game_title] is finally here!\n\nSpecial launch offer: [launch_offer]\n\nGet it here: [store_link]\n\n#GameRelease #IndieGame"
+                }
+            }
+        },
+        "post_launch": {
+            "updates": {
+                "patch_notes": {
+                    "required_vars": {
+                        "version": "string",
+                        "changes": "array",
+                        "fixes": "array"
+                    },
+                    "template": "📝 Update [version] is live!\n\nNew Features:\n• [changes]\n\nFixes:\n• [fixes]\n\n#GameUpdate #PatchNotes"
+                }
+            },
+            "community_content": {
+                "fan_art_spotlight": {
+                    "required_vars": {
+                        "artist_name": "string",
+                        "artwork_description": "string",
+                        "social_link": "string"
+                    },
+                    "template": "🎨 Fan Art Spotlight!\n\nAmazing work by [artist_name]!\n\n[artwork_description]\n\nFollow them: [social_link]\n\n#FanArt #Gaming"
+                },
+                "player_achievements": {
+                    "required_vars": {
+                        "player_name": "string",
+                        "achievement": "string",
+                        "congratulations": "string"
+                    },
+                    "template": "🏆 Player Spotlight!\n\n[player_name] just [achievement]!\n\n[congratulations]\n\n#Gaming #Achievement"
+                }
+            }
+        },
+        "engagement_content": {
+            "tips_and_tricks": {
+                "required_vars": {
+                    "tip_title": "string",
+                    "description": "string",
+                    "difficulty": "string"
+                },
+                "template": "💡 Pro Tip!\n\n[tip_title]\n\n[description]\n\nDifficulty: [difficulty]\n\n#GameTips #Tutorial"
+            },
+            "events": {
+                "required_vars": {
+                    "event_name": "string",
+                    "duration": "string",
+                    "rewards": "string",
+                    "how_to_join": "string"
+                },
+                "template": "🎪 Event Alert!\n\n[event_name] is here!\n\nDuration: [duration]\nRewards: [rewards]\n\nHow to join: [how_to_join]\n\n#GameEvent"
+            }
+        }
+    },
+    "post_rules": {
+        "character_limits": {
+            "twitter": 280,
+            "facebook": 63206,
+            "instagram": 2200,
+            "discord": 2000
+        },
+        "media_guidelines": {
+            "gif_size": "max 15MB",
+            "video_length": "max 2:20 for Twitter",
+            "image_formats": ["PNG", "JPG", "GIF"],
+            "recommended_dimensions": {
+                "twitter": "1200x675px",
+                "instagram": "1080x1080px",
+                "facebook": "1200x630px"
+            }
+        },
+        "hashtag_strategy": {
+            "core_tags": ["#IndieGame", "#GameDev", "#IndieGameDev"],
+            "platform_specific": {
+                "twitter": "2-3 hashtags",
+                "instagram": "15-30 hashtags",
+                "facebook": "1-2 hashtags"
+            }
+        },
+        "posting_frequency": {
+            "development": "2-3 posts per week",
+            "pre_launch": "4-5 posts per week",
+            "launch_week": "2-3 posts per day",
+            "post_launch": "3-4 posts per week"
+        }
+    }
+}

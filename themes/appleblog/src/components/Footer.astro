@@ -1,0 +1,39 @@
+---
+import { SITE_TITLE, SITE_EMAIL, SITE_NAME, NAV_LINKS, COPYRIGHT_LINK, COPYRIGHT_TEXT } from "../consts";
+const { theme } = Astro.props;
+const date = new Date();
+const year = date.getFullYear();
+---
+
+<div class:list={["footer-main", { "footer-dark": theme === "dark" }]}>
+  <div class="content-body footer-wraper">
+    <div class="footer-box">
+      <div class="foot-nav">
+        <div class="foot-nav-items">
+          <div class="item">
+            <div class="logo">{SITE_TITLE}</div>
+            <div class="email">Email: {SITE_EMAIL}</div>
+          </div>
+
+          {Object.keys(NAV_LINKS).map((key) => (
+            <div class="item" key={key}>
+              <div class="item-title">{NAV_LINKS[key].title}</div>
+              {NAV_LINKS[key].links.map((link) => (
+                <a href={link.url} target="_blank" key={link.name}>{link.name}</a>
+              ))}
+            </div>
+          ))}
+          
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="copyright">
+          &copy; {`${year} ${SITE_NAME}`} 
+          <a href="https://github.com/wanghaisheng/github-daily-event-to-blog-update">powered by github-daily-event-to-blog-update</a>
+          <!-- Use the copyright link and text from the constants -->
+          <a href={COPYRIGHT_LINK} target="_blank">{COPYRIGHT_TEXT}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

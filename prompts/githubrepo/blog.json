@@ -1,0 +1,97 @@
+{
+    "metadata": {
+        "version": "1.0",
+        "last_updated": "2024-12-22",
+        "author": "wanghaisheng",
+        "repository": "github-daily-event-to-blog-update",
+        "type": "dev_blog_generator"
+    },
+    "blog_post_template": {
+        "structure": {
+            "format": "markdown",
+            "sections": [
+                "title",
+                "header",
+                "timeline",
+                "introduction",
+                "research",
+                "technical",
+                "lessons",
+                "conclusion"
+            ]
+        },
+        "prompts": {
+            "title_generation": {
+                "required_vars": {
+                    "repo_name": "string",
+                    "repo_description": "string",
+                    "readme_content": "string"
+                },
+                "template": {
+                    "prompt": "Generate an engaging, creative blog title for a developer side project.\nProject details:\n- Name: {repo_name}\n- Description: {repo_description}\n- README excerpt: {readme_content[:500]}...\n\nRequirements:\n1. Use one of these formats:\n   - \"From Idea to Reality: [Project Name]\"\n   - \"Building [X]: A Developer's Side Project Journey\"\n   - \"Weekend Hack: How I Built [X]\"\n   - \"[Solving X] with [Technology]: A Side Project Story\"\n2. Make it engaging and specific\n3. Include relevant tech keywords\n4. Keep it under 80 characters\n5. Focus on the building/creation aspect",
+                    "max_tokens": 50
+                }
+            },
+            "introduction": {
+                "required_vars": {
+                    "repo_name": "string",
+                    "readme_content": "string"
+                },
+                "template": {
+                    "title": "## Project Genesis",
+                    "prompt": "Write an engaging introduction for a blog post about {repo_name}.\nContext:\n{readme_content[:500]}...\n\nInclude:\n1. The spark/inspiration for the project\n2. Personal motivation\n3. Initial challenges\n4. Quick overview of the solution\n\nWrite in first person, make it personal and engaging.",
+                    "max_tokens": 1024
+                }
+            },
+            "research": {
+                "required_vars": {
+                    "readme_content": "string"
+                },
+                "template": {
+                    "title": "## From Idea to Implementation",
+                    "prompt": "Based on the repository README:\n{readme_content}\n\nWrite about:\n1. Initial research and planning\n2. Technical decisions and their rationale\n3. Alternative approaches considered\n4. Key insights that shaped the project\n\nFocus on the journey from concept to code.",
+                    "max_tokens": 1024
+                }
+            },
+            "technical": {
+                "required_vars": {
+                    "readme_content": "string"
+                },
+                "template": {
+                    "title": "## Under the Hood",
+                    "prompt": "Analyze this README content:\n{readme_content}\n\nCreate a technical deep-dive covering:\n1. Architecture decisions\n2. Key technologies used\n3. Interesting implementation details\n4. Technical challenges overcome\n\nInclude specific examples and code concepts.",
+                    "max_tokens": 1024
+                }
+            },
+            "lessons": {
+                "required_vars": {
+                    "readme_content": "string"
+                },
+                "template": {
+                    "title": "## Lessons from the Trenches",
+                    "prompt": "Based on the project history and README:\n{readme_content}\n\nShare:\n1. Key technical lessons learned\n2. What worked well\n3. What you'd do differently\n4. Advice for others\n\nBe specific and practical.",
+                    "max_tokens": 1024
+                }
+            },
+            "conclusion": {
+                "required_vars": {
+                    "repo_name": "string",
+                    "readme_content": "string"
+                },
+                "template": {
+                    "title": "## What's Next?",
+                    "prompt": "Write a forward-looking conclusion for {repo_name} that includes:\n1. Current project status\n2. Future development plans\n3. Call to action for contributors\n4. Final thoughts on the side project journey\n\nBase it on this README:\n{readme_content}",
+                    "max_tokens": 300
+                }
+            }
+        },
+        "configuration": {
+            "model": "gpt-4",
+            "temperature": 0.7,
+            "formatting": {
+                "header_format": "# {title}\n\n*Built by {username} | Last updated: {current_date}*\n\n",
+                "timeline_format": "## Project Timeline\n\n<div class=\"timeline-container\">\n{timeline_html}</div>\n\n"
+            }
+        }
+    }
+}
