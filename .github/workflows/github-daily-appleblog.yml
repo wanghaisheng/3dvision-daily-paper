@@ -1,4 +1,4 @@
-name: Run appleblog Daily 
+name: Run github appleblog Daily 
 
 on:
   workflow_dispatch:
@@ -40,7 +40,7 @@ jobs:
       # ============================================
       # TODO [√] 测试 Scaffold 脚手架指令
       # ============================================
-      - name: Run daily arxiv
+      - name: Run daily github
         run: |
           python src/github/daily_github_appleblog.py run --env=${{ env.RUN_ENV }} --power=${{ env.POWER }}
         env:
